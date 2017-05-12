@@ -1,0 +1,94 @@
+# Copyright (c) 2015 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+#
+
+#
+# This file defines paths to key applications for the project
+#
+
+#
+# Mari
+#
+mari_linux: 'Mari3.0'
+mari_mac: /Applications/Mari3.0v2
+mari_windows: 'C:\Program Files\Mari3.1v3\Bundle\bin\Mari3.1v3.exe'
+
+
+#
+# Maya
+#
+maya_windows: 'C:\Program Files\Autodesk\Maya2015\bin\maya.exe'
+maya_mac: /Applications/Autodesk/maya2015/Maya.app
+maya_linux: maya
+
+# For Shotgun Software (we don't have 2015)
+sg_maya2016_mac: /Applications/Autodesk/maya2016.5/Maya.app
+
+
+#
+# Nuke
+#
+nuke_mac: /Applications/Nuke9.0v7/Nuke9.0v7.app
+nuke_windows: 'C:\Program Files\Nuke9.0v7\Nuke9.0.exe'
+nuke_linux: Nuke9.0
+
+
+#
+# Nuke Studio
+#
+nukestudio_mac: /Applications/Nuke9.0v8/NukeStudio9.0v8.app
+nukestudio_windows: 'C:\Program Files\Nuke9.0v8\Nuke9.0.exe'
+nukestudio_linux: Nuke9.0
+
+
+#
+# 3dsmax 2015
+#
+3dsmax_windows: 'C:\Program Files\Autodesk\3ds Max 2015\3dsmax.exe'
+
+
+#
+# Houdini
+#
+houdini_mac: /Applications/Houdini 15.0.244.16/Houdini.app
+houdini_windows: 'C:\Program Files\Side Effects Software\Houdini 15.0.244.16\bin\houdini.exe'
+houdini_linux: '/opt/hfs15.0.244.16/bin/houdini'
+
+
+#
+# Photoshop CC
+#
+photoshop_mac: /Applications/Adobe Photoshop CC 2015.5/Adobe Photoshop CC 2015.5.app
+photoshop_win: 'C:\Program Files\Adobe\Adobe Photoshop CC 2015.5\Photoshop.exe'
+
+# For Shotgun Software (we don't have 2015.5)
+sg_photoshop2017_mac: /Applications/Adobe Photoshop CC 2017/Adobe Photoshop CC 2017.app
+
+#
+# Illustrator CC (Unsupported by Toolkit except for launch)
+#
+illustrator_win: 'C:\Program Files\Adobe\Adobe Illustrator CC 2015.3\Support Files\Contents\Windows\Illustrator.exe'
+illustrator_mac: /Applications/Adobe Illustrator CC 2015.3/Adobe Illustrator.app
+
+#
+# Hiero
+#
+hiero_mac: /Applications/Nuke9.0v8/Hiero9.0v8.app
+hiero_win: 'C:\Program Files\Nuke9.0v8\Nuke9.0.exe'
+hiero_linux: Nuke9.0
+
+#
+# Tweak RV
+#
+rv_mac: /Applications/RV64.app
+rv_win: \\isln-smb\aw_config\Apps\RV\7.1.2\bin\rv.exe
+rv_linux: rv
+
+

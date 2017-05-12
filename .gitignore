@@ -1,0 +1,74 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# C extensions
+*.so
+
+# PyCharm
+.idea/
+
+# Windows and Mac random stuff
+Thumbs.db
+.DS_Store
+
+# Distribution / packaging
+.Python
+# env/ # tk uses this dir name
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+
+# Sphinx documentation
+docs/_build/
+
+# PyBuilder
+target/
+
+# TK files which are install specific
+core/roots.yml
+core/app_store.yml
+core/install_location.yml
+core/interpreter_Darwin.cfg
+core/interpreter_Linux.cfg
+core/interpreter_Windows.cfg
+core/pipeline_configuration.yml
+core/shotgun.yml
