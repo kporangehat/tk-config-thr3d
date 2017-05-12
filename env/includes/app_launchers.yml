@@ -37,7 +37,7 @@ launch_3dsmax:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -46,7 +46,6 @@ launch_3dsmax:
   versions: []
   windows_args: ''
   windows_path: '@3dsmax_windows'
-
 #
 # -------------------------------------------------
 # Houdini
@@ -61,7 +60,7 @@ launch_houdini:
   linux_args: ''
   linux_path: '@houdini_linux'
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -84,7 +83,7 @@ launch_mari:
   linux_args: ''
   linux_path: '@mari_linux'
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -107,7 +106,7 @@ launch_maya:
   linux_args: ''
   linux_path: '@maya_linux'
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -130,7 +129,7 @@ launch_maya2016:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -153,7 +152,7 @@ launch_nuke:
   linux_args: ''
   linux_path: '@nuke_linux'
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -176,7 +175,7 @@ launch_nukestudio:
   linux_args: --studio
   linux_path: '@nukestudio_linux'
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -199,7 +198,7 @@ launch_photoshopcc:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -222,7 +221,7 @@ launch_photoshopcc2017:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -245,7 +244,7 @@ launch_illustratorcc:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.0
+    version: v0.8.2
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -254,7 +253,6 @@ launch_illustratorcc:
   versions: []
   windows_args: ''
   windows_path: '@illustrator_win'
-
 #
 # -------------------------------------------------
 # Screening Room
@@ -270,4 +268,3 @@ launch_screeningroom:
   rv_path_mac: '@rv_mac'
   rv_path_windows: '@rv_win'
   init_hook: '{config}/sr_launch_hook.py'
-  
