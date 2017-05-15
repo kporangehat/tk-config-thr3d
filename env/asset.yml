@@ -180,7 +180,7 @@ engines:
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-screeningroom: '@launch_screeningroom'
-      tk-shotgun-launchmari: '@launch_mari3_1v3'
+      tk-shotgun-launchmari: '@launch_mari'
     location:
       version: v0.5.1
       type: app_store
