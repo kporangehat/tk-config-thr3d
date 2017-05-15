@@ -174,11 +174,11 @@ engines:
   # -------------------------------------------------
   tk-shell:
     apps:
-      tk-multi-launch3dsmax: '@launch_3dsmax2017'
-      tk-multi-launchhoudini: '@launch_houdini16'
-      tk-multi-launchmaya: '@launch_maya2015'
-      tk-multi-launchnuke: '@launch_nuke9_v7'
-      tk-multi-launchphotoshopcc: '@launch_photoshopcc_2015'
+      tk-multi-launch3dsmax: '@launch_3dsmax'
+      tk-multi-launchhoudini: '@launch_houdini'
+      tk-multi-launchmaya: '@launch_maya'
+      tk-multi-launchnuke: '@launch_nuke'
+      tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-shotgun-launchmari: '@launch_mari3_1v3'
     location:
