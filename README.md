@@ -1,3 +1,3 @@
 --------------------------------------------
-Standard CPG (Consumer Product Goods) Config
+Standard CPG (Consumer Package Goods) Config
 --------------------------------------------

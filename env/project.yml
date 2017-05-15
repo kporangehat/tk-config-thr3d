@@ -56,14 +56,15 @@ engines:
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchnukestudio: '@launch_nukestudio'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
-      tk-multi-screeningroom: '@launch_screeningroom'
+      tk-multi-launchillustratorcc: '@launch_illustratorcc'
+#      tk-multi-screeningroom: '@launch_screeningroom'
     collapse_rules:
-    - {button_label: $app, match: Launch $app, menu_label: None}
+    - {button_label: $app, match: Launch $app $version, menu_label: Launch $version}
     debug_logging: false
     default_group: Studio
     groups:
     - matches: ['*Houdini*', '*Mari*', '*Max*', '*Maya*', '*Motion*', '*Nuke*', '*Photoshop*',
-        '*Softimage*']
+        '*Illustrator*']
       name: Creative Tools
     - matches: ['*Hiero*']
       name: Editorial Tools
@@ -364,11 +365,9 @@ engines:
       tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmari: '@launch_mari'
       tk-multi-launchmaya: '@launch_maya'
-      tk-multi-launchmaya2016: '@launch_maya2016'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchnukestudio: '@launch_nukestudio'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
-      tk-multi-launchphotoshopcc2017: '@launch_photoshopcc2017'
       tk-multi-launchillustratorcc: '@launch_illustratorcc'
       tk-multi-screeningroom: '@launch_screeningroom'
     location:
