@@ -181,6 +181,7 @@ engines:
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-shotgun-launchmari: '@launch_mari'
+      tk-multi-launchcreaform: '@launch_creaform'
     location:
       version: v0.5.1
       type: app_store

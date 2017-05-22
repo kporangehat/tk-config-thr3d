@@ -23,6 +23,28 @@ includes:
 ################################################################################################
 # app definitions for all the Sgtk app launchers.
 
+# Creaform
+# -------------------------------------------------
+launch_creaform:
+  defer_keyword: ''
+  engine: ''
+  extra: {}
+  hook_app_launch: default
+  hook_before_app_launch: default
+  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\creaform_icon.png'
+  linux_args: ''
+  linux_path: ''
+  location:
+    version: v0.8.2
+    type: app_store
+    name: tk-multi-launchapp
+  mac_args: ''
+  mac_path: ''
+  menu_name: Launch Creaform
+  versions: []
+  windows_args: ''
+  windows_path: '@creaform_windows'
+
 #
 # -------------------------------------------------
 # 3dsmax
@@ -135,7 +157,7 @@ launch_nuke:
   mac_args: ''
   mac_path: '@nuke_mac'
   menu_name: 'Launch Nuke {version}'
-  versions: ['(10.0)v5', '(9.0)v7']
+  versions: ['(10.5)v4', '(9.0)v7']
   windows_args: ''
   windows_path: '@nuke_windows'
 #
@@ -158,7 +180,7 @@ launch_nukestudio:
   mac_args: ''
   mac_path: ''
   menu_name: 'Launch NukeStudio {version}'
-  versions: ['(10.0)v5', '(9.0)v7']
+  versions: ['(10.5)v4', '(9.0)v7']
   windows_args: --studio
   windows_path: '@nukestudio_windows'
 #
@@ -194,7 +216,7 @@ launch_illustratorcc:
   extra: {}
   hook_app_launch: default
   hook_before_app_launch: default
-  icon: 'A:\Shotgun\studio\install\icons\illustrator_icon.png'
+  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\illustrator_icon.png'
   linux_args: ''
   linux_path: ''
   location:

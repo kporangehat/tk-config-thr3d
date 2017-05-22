@@ -20,6 +20,14 @@ mari_linux: 'Mari3.0'
 mari_mac: /Applications/Mari3.0v2
 mari_windows: 'C:\Program Files\Mari3.1v3\Bundle\bin\Mari3.1v3.exe'
 
+#
+#
+# Creaform
+#
+creaform_linux: ''
+creaform_mac: ''
+creaform_windows: 'C:\Program Files\creaform\vxelements\vxelements.exe'
+
 
 #
 # Maya
