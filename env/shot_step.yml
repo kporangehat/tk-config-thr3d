@@ -84,11 +84,11 @@ engines:
         primary_description: Publish and version up the current 3ds Max scene
         primary_display_name: 3ds Max Publish
         primary_icon: icons/publish_3dsmax_main.png
-        primary_publish_template: max_shot_publish
+        primary_publish_template: 3d_shot_publish_max
         primary_scene_item_type: work_file
         primary_tank_type: 3dsmax Scene
         secondary_outputs: []
-        template_work: max_shot_work
+        template_work: 3d_shot_work_max
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-setframerange:
         location:
@@ -105,8 +105,8 @@ engines:
           version: v0.7.3
           type: app_store
           name: tk-multi-snapshot
-        template_snapshot: max_shot_snapshot
-        template_work: max_shot_work
+        template_snapshot: 3d_shot_snapshot_max
+        template_work: 3d_shot_work_max
       tk-multi-workfiles2:
         allow_task_creation: true
         create_new_task_hook: default
@@ -136,10 +136,10 @@ engines:
         saveas_default_name: scene
         saveas_prefer_version_up: false
         show_my_tasks: true
-        template_publish: max_shot_publish
-        template_publish_area: shot_publish_area_max
-        template_work: max_shot_work
-        template_work_area: shot_work_area_max
+        template_publish: 3d_shot_publish_max
+        template_publish_area: 3d_shot_publish
+        template_work: 3d_shot_work_max
+        template_work_area: 3d_shot_work
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
@@ -163,13 +163,22 @@ engines:
             - quicktime_clipboard
             - sequence_clipboard
             filters: {}
+      tk-multi-pythonconsole:
+        location:
+          version: v1.0.9
+          type: app_store
+          name: tk-multi-pythonconsole
     compatibility_dialog_min_version: 2017
     debug_logging: false
     location:
       version: v0.3.0
       type: app_store
       name: tk-3dsmaxplus
-    menu_favourites: []
+    menu_favourites:
+    - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
   #
   # -------------------------------------------------
   # houdini
@@ -196,7 +205,7 @@ engines:
         primary_description: Publish and version up the current scene
         primary_display_name: Scene File Publish
         primary_icon: icons/publish_houdini_main.png
-        primary_publish_template: houdini_shot_publish
+        primary_publish_template: 3d_shot_publish_houdini
         primary_scene_item_type: work_file
         primary_tank_type: Houdini Scene
         secondary_outputs:
@@ -207,7 +216,7 @@ engines:
           icon: icons/alembic_cache_publish.png
           name: alembic_cache
           publish_group: true
-          publish_template: houdini_shot_work_alembic_cache
+          publish_template: mesh_alembic_cache
           required: false
           scene_item_type: alembic_cache
           selected: false
@@ -219,13 +228,12 @@ engines:
           icon: icons/publish_houdini_renders.png
           name: rendered_image
           publish_group: false
-          publish_template: houdini_shot_render
+          publish_template: render_img_work
           required: false
           scene_item_type: rendered_image
           selected: false
           tank_type: Rendered Image
-        template_work: houdini_shot_work
-      tk-multi-screeningroom: '@launch_screeningroom'
+        template_work: 3d_shot_work_houdini
       tk-multi-setframerange:
         location:
           version: v0.3.0
@@ -241,8 +249,8 @@ engines:
           version: v0.7.3
           type: app_store
           name: tk-multi-snapshot
-        template_snapshot: houdini_shot_snapshot
-        template_work: houdini_shot_work
+        template_snapshot: 3d_shot_snapshot_houdini
+        template_work: 3d_shot_work_houdini
       tk-multi-workfiles2:
         allow_task_creation: true
         create_new_task_hook: default
@@ -272,10 +280,10 @@ engines:
         saveas_default_name: scene
         saveas_prefer_version_up: false
         show_my_tasks: true
-        template_publish: houdini_shot_publish
-        template_publish_area: shot_publish_area_houdini
-        template_work: houdini_shot_work
-        template_work_area: shot_work_area_houdini
+        template_publish: 3d_shot_publish_houdini
+        template_publish_area: 3d_shot_publish
+        template_work: 3d_shot_work_houdini
+        template_work_area: 3d_shot_work
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
@@ -299,33 +307,6 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py'
         shotgun_fields_hook: '{self}/shotgun_fields.py'
-      tk-houdini-alembicnode:
-        location:
-          version: v0.2.5
-          type: app_store
-          name: tk-houdini-alembicnode
-        work_file_template: houdini_shot_work
-        default_node_name: sg_alembic_out
-        output_profiles:
-        - name: Shot Work Cache
-          settings: {}
-          color: []
-          output_cache_template: houdini_shot_work_alembic_cache
-      tk-houdini-mantranode:
-        location:
-          version: v0.2.7
-          type: app_store
-          name: tk-houdini-mantranode
-        work_file_template: houdini_shot_work
-        default_node_name: sg_mantra_out
-        output_profiles:
-        - name: Default Render
-          settings: {}
-          color: []
-          output_render_template: houdini_shot_render
-          output_ifd_template: houdini_shot_ifd
-          output_dcm_template: houdini_shot_dcm
-          output_extra_plane_template: houdini_shot_extra_plane
       tk-multi-loader2:
         action_mappings:
           Alembic Cache: [import]
@@ -362,6 +343,11 @@ engines:
           version: v1.4.6
           type: app_store
           name: tk-multi-breakdown
+      tk-multi-pythonconsole:
+        location:
+          version: v1.0.9
+          type: app_store
+          name: tk-multi-pythonconsole
     debug_logging: false
     enable_sg_shelf: true
     enable_sg_menu: true
@@ -529,8 +515,8 @@ engines:
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     template_project: shot_root
     use_sgtk_as_menu_name: false
@@ -542,6 +528,11 @@ engines:
   tk-nuke:
     apps:
       tk-multi-about: '@about'
+      tk-multi-pythonconsole:
+        location:
+          version: v1.0.9
+          type: app_store
+          name: tk-multi-pythonconsole
       tk-multi-breakdown:
         hook_scene_operations: '{self}/tk-nuke_scene_operations.py'
         location:
@@ -726,13 +717,33 @@ engines:
           name: tk-nuke-writenode
         template_script_work: 2d_shot_work_nuke
         write_nodes:
-        - file_type: dpx
-          name: Mono Dpx
+        - file_type: exr
+          name: Write Exr
           promote_write_knobs: []
           proxy_publish_template:
           proxy_render_template:
-          publish_template: 2d_nuke_shot_publish_render_mono_dpx
-          render_template: 2d_nuke_shot_render_mono_dpx
+          publish_template: 2d_nuke_shot_publish_render_exr
+          render_template: 2d_nuke_shot_render_exr
+          settings: {}
+          tank_type: Rendered Image
+          tile_color: []
+        - file_type: png
+          name: Write PNG
+          promote_write_knobs: []
+          proxy_publish_template:
+          proxy_render_template:
+          publish_template: 2d_nuke_shot_publish_render_png
+          render_template: 2d_nuke_shot_render_png
+          settings: {}
+          tank_type: Rendered Image
+          tile_color: []
+        - file_type: tiff
+          name: Write TIFF
+          promote_write_knobs: []
+          proxy_publish_template:
+          proxy_render_template:
+          publish_template: 2d_nuke_shot_publish_render_tiff
+          render_template: 2d_nuke_shot_render_tiff
           settings: {}
           tank_type: Rendered Image
           tile_color: []
@@ -745,13 +756,13 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     bin_context_menu: []
     spreadsheet_context_menu: []
     timeline_context_menu: []
-    project_favourite_name: Shotgun Current Project
+    project_favourite_name: Current Project
     use_sgtk_as_menu_name: false
 
   #
@@ -784,7 +795,7 @@ engines:
         primary_scene_item_type: work_file
         primary_tank_type: Hiero Project
         secondary_outputs: []
-        template_work: hiero_project_work
+        template_work: 2d_shot_work_nuke
       tk-multi-snapshot:
         hook_copy_file: default
         hook_scene_operation: default
@@ -794,7 +805,7 @@ engines:
           type: app_store
           name: tk-multi-snapshot
         template_snapshot: hiero_project_snapshot
-        template_work: hiero_project_work
+        template_work: 2d_shot_work_nuke
       tk-multi-workfiles2:
         allow_task_creation: true
         create_new_task_hook: default
@@ -820,8 +831,8 @@ engines:
         show_my_tasks: false
         template_publish: hiero_project_publish
         template_publish_area: hiero_project_publish_area
-        template_work: hiero_project_work
-        template_work_area: hiero_project_work_area
+        template_work: 2d_shot_work_nuke
+        template_work_area: 2d_shot_work
         version_compare_ignore_fields: []
       tk-nuke-quickdailies:
         current_scene_template: nuke_shot_work
@@ -1113,9 +1124,10 @@ engines:
           name: tk-multi-pythonconsole
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
+    - {app_instance: tk-multi-pythonconsole, name: Shotgun Python Console...}
     debug_logging: false
     location:
       version: v1.0.17

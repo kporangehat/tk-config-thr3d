@@ -121,7 +121,25 @@ keys:
         default: ma
         alias: extension
 
-    # Maya supports two extension types.
+    # Max supports one extension types.
+    max_extension:
+        type: str
+        choices:
+            max: 3ds Max (.max)
+        default: max
+        alias: extension
+
+    # Houdini supports three extension types.
+    houdini_extension:
+        type: str
+        choices:
+            hip: Hip (.hip)
+            hiplc: Hiplc (.hiplc)
+            hipnc: Hipnc (.hipnc)
+        default: hip
+        alias: extension
+
+    # Photoshop supports one extension types.
     ps_extension:
         type: str
         choices:
@@ -197,14 +215,21 @@ paths:
 
     3d_shot_publish:
         definition: '@shot_root/3d'
-        root_name: 'primary'       
+        root_name: 'primary'
 
     3d_shot_snapshot:
         definition: '@3d_shot_work/{Step}/snapshots'
 
+    3d_shot_cache:
+        definition: '@3d_shot_publish/_cache'
+
     shot_review_mov:
         definition: '@shot_root/img/mov/'
-        root_name: 'primary'       
+        root_name: 'primary'
+
+    shot_review_ren:
+        definition: '@shot_root/img/ren'
+        root_name: 'primary'
 
 
     # ----------------------------------------------------------------------------------------
@@ -240,6 +265,52 @@ paths:
         definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{maya_extension}'
         root_name: 'primary'
 
+    mesh_alembic_cache:
+        definition: '@3d_shot_cache/{Shot}_{version}.abc'
+        root_name: 'primary'
+
+    # -------------------------------------
+    # 3ds Max
+
+    3d_shot_work_max:
+        definition: '@3d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{max_extension}'
+        root_name: 'primary'
+
+    3d_shot_publish_max:
+        definition: '@3d_shot_publish/{Shot}_{Step}_{version}.{max_extension}'
+        root_name: 'primary'
+
+    3d_shot_snapshot_max:
+        definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{max_extension}'
+#        root_name: 'primary'
+
+    # -------------------------------------
+    # Houdini
+
+    3d_shot_work_houdini:
+        definition: '@3d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{houdini_extension}'
+        root_name: 'primary'
+
+    3d_shot_publish_houdini:
+        definition: '@3d_shot_publish/{Shot}_{Step}_{version}.{houdini_extension}'
+        root_name: 'primary'
+
+    3d_shot_snapshot_houdini:
+        definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{houdini_extension}'
+        root_name: 'primary'
+
+    3d_shot_houdini_ifd:
+        definition: '@3d_shot_cache/{Shot}_{Step}_ifd_{SEQ}.{version}.{houdini_extension}'
+        root_name: 'primary'
+
+    3d_shot_houdini_dcn:
+        definition: '@3d_shot_cache/{Shot}_{Step}_dcn_{SEQ}.{version}.{houdini_extension}'
+        root_name: 'primary'
+
+    3d_shot_snapshot_extra_plane:
+        definition: '@3d_shot_cache/{Shot}_{Step}_plane_{SEQ}.{version}.{houdini_extension}'
+        root_name: 'primary'
+
     # -------------------------------------
     # Nuke
 
@@ -267,7 +338,36 @@ paths:
         definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.dpx'
         root_name: 'primary'
 
+    2d_nuke_shot_render_exr:
+        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.exr'
+        root_name: 'primary'
 
+    2d_nuke_shot_publish_render_exr:
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.exr'
+        root_name: 'primary'
+
+    2d_nuke_shot_render_png:
+        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.png'
+        root_name: 'primary'
+
+    2d_nuke_shot_publish_render_png:
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.png'
+        root_name: 'primary'
+
+    2d_nuke_shot_render_tiff:
+        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.tiff'
+        root_name: 'primary'
+
+    2d_nuke_shot_publish_render_tiff:
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.tiff'
+        root_name: 'primary'
+
+    # -------------------------------------
+    # Render Images
+
+    render_img_work:
+        definition: '@shot_review_ren/{Shot}_{Step}_{SEQ}.{version}.exr'
+        root_name: 'primary'
 
     # ##########################################################################################
     # # Asset pipeline

@@ -38,8 +38,6 @@ engines:
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-launchillustratorcc: '@launch_illustratorcc'
       tk-multi-launchcreaform: '@launch_creaform'
-#      Commenting out the screenroom app based on Brandon's request
-#      tk-multi-screeningroom: '@launch_screeningroom'
       tk-shotgun-launchfolder:
         deny_permissions: []
         deny_platforms: []
