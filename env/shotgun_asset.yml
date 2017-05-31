@@ -36,6 +36,7 @@ engines:
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-launchillustratorcc: '@launch_illustratorcc'
+      tk-multi-launchcreaform: '@launch_creaform'
       tk-shotgun-folders:
         deny_permissions: []
         deny_platforms: []

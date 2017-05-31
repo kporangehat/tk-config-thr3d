@@ -216,7 +216,7 @@ engines:
           icon: icons/alembic_cache_publish.png
           name: alembic_cache
           publish_group: true
-          publish_template: mesh_alembic_cache
+          publish_template: shot_alembic_cache
           required: false
           scene_item_type: alembic_cache
           selected: false
@@ -378,7 +378,8 @@ engines:
           Maya Scene: [reference, import]
           Photoshop Image: [texture_node]
           Rendered Image: [texture_node]
-          THR3D Foo: [make_awesome]
+          Alembic Cache: [import]
+          OBJ: [import]
         actions_hook: '{self}/tk-maya_actions.py'
         download_thumbnails: true
         entities:
@@ -428,9 +429,29 @@ engines:
         primary_publish_template: 3d_shot_publish_maya
         primary_scene_item_type: work_file
         primary_tank_type: Maya Scene
-        secondary_outputs: []
+        secondary_outputs:
+          - description: 'Publish Alembic'
+            display_group: Caches
+            display_name: Alembic Cache
+            icon: 'icons/alembic_cache_publish.png'
+            name: alembic_cache
+            publish_template: shot_alembic_cache
+            required: false
+            scene_item_type: mesh_group
+            selected: false
+            tank_type: 'Alembic Cache'
+          - description: 'Publish OBJ'
+            display_group: Obj
+            display_name: OBJ
+            icon: 'icons/obj_publish.png'
+            name: obj_export
+            publish_template: shot_obj_cache
+            required: false
+            scene_item_type: mesh_group
+            selected: false
+            tank_type: 'OBJ'
+
         template_work: 3d_shot_work_maya
-      tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-setframerange:
         location:
           version: v0.3.0

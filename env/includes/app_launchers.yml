@@ -123,7 +123,7 @@ launch_maya:
   engine: tk-maya
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@maya_linux'
