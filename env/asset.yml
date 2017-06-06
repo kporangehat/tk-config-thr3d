@@ -47,6 +47,7 @@ engines:
       version: v0.3.0
       type: app_store
       name: tk-3dsmaxplus
+    menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
