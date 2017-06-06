@@ -318,7 +318,7 @@ engines:
             - sequence_clipboard
             filters: {}
     bin_context_menu:
-    - {app_instance: tk-multi-workfiles2, keep_in_menu: false, name: File Save...,
+    - {app_instance: tk-multi-workfiles2, keep_in_menu: false, name: File Save Iteration...,
       requires_selection: true}
     - {app_instance: tk-multi-snapshot, keep_in_menu: false, name: Snapshot..., requires_selection: true}
     - {app_instance: tk-multi-snapshot, keep_in_menu: false, name: Snapshot History...,
@@ -354,7 +354,7 @@ engines:
       tk-multi-workfiles2: '@workfiles2'
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     debug_logging: false
     location:
       version: v1.0.17

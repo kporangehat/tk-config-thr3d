@@ -176,7 +176,7 @@ engines:
       name: tk-3dsmaxplus
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
   #
@@ -357,8 +357,8 @@ engines:
       name: tk-houdini
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
     - {app_instance: tk-multi-publish, name: Publish...}
   #
   # -------------------------------------------------
@@ -536,7 +536,7 @@ engines:
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     template_project: shot_root
@@ -777,7 +777,7 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     bin_context_menu: []
@@ -989,7 +989,7 @@ engines:
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
     bin_context_menu:
-    - {app_instance: tk-multi-workfiles2, keep_in_menu: false, name: File Save...,
+    - {app_instance: tk-multi-workfiles2, keep_in_menu: false, name: File Save Iteration...,
       requires_selection: true}
     - {app_instance: tk-multi-snapshot, keep_in_menu: false, name: Snapshot..., requires_selection: true}
     - {app_instance: tk-multi-snapshot, keep_in_menu: false, name: Snapshot History...,
@@ -1007,6 +1007,9 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
     spreadsheet_context_menu: []
     timeline_context_menu: []
   #
@@ -1145,7 +1148,7 @@ engines:
           name: tk-multi-pythonconsole
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     - {app_instance: tk-multi-pythonconsole, name: Shotgun Python Console...}

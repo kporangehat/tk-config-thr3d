@@ -30,7 +30,7 @@ launch_creaform:
   engine: ''
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\creaform_icon.png'
   linux_args: ''
   linux_path: ''
@@ -54,7 +54,7 @@ launch_3dsmax:
   engine: tk-3dsmaxplus
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
@@ -77,7 +77,7 @@ launch_houdini:
   engine: tk-houdini
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
@@ -100,7 +100,7 @@ launch_mari:
   engine: tk-mari
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@mari_linux'
@@ -124,6 +124,7 @@ launch_maya:
   extra: {}
   hook_app_launch: default
   hook_before_app_launch: before_app_launch
+  hook_after_app_launch: after_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@maya_linux'
@@ -146,7 +147,7 @@ launch_nuke:
   engine: tk-nuke
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@nuke_linux'
@@ -169,7 +170,7 @@ launch_nukestudio:
   engine: tk-nukestudio
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_nukestudio_256.png'
   linux_args: --studio
   linux_path: ''
@@ -192,7 +193,7 @@ launch_photoshopcc:
   engine: tk-photoshopcc
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
@@ -215,7 +216,7 @@ launch_illustratorcc:
   engine: ''
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\illustrator_icon.png'
   linux_args: ''
   linux_path: ''

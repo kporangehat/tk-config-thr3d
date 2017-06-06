@@ -46,6 +46,7 @@ keys:
         type: str
     iteration:
         type: int
+        format_spec: "03"
     version:
         type: int
         format_spec: "03"
@@ -222,7 +223,7 @@ paths:
         definition: '@3d_shot_work/snapshots'
 
     3d_shot_cache:
-        definition: '@3d_shot_publish/_cache'
+        definition: '@3d_shot_publish/_cache/{Step}'
 
     shot_review_mov:
         definition: '@shot_root/img/mov/'
@@ -259,7 +260,7 @@ paths:
         definition: '@3d_asset_work/snapshots'
 
     3d_asset_cache:
-        definition: '@3d_asset_publish/_cache'
+        definition: '@3d_asset_publish/_cache/{Step}'
         root_name: 'primary'
 
     asset_review_mov:
@@ -332,7 +333,7 @@ paths:
     # Maya Asset
 
     3d_asset_work_maya:
-        definition: '@3d_asset_work/{Asset}_{version}.[{iteration}.]{maya_extension}'
+        definition: '@3d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]{maya_extension}'
         root_name: 'primary'
 
     3d_asset_publish_maya:
@@ -344,7 +345,7 @@ paths:
         root_name: 'primary'
 
     asset_alembic_cache:
-        definition: '@3d_asset_cache/{Asset}[_{Step}]_{version}.abc'
+        definition: '@3d_asset_cache/{Asset}_{Step}_{version}.abc'
         root_name: 'primary'
 
     asset_obj_cache:

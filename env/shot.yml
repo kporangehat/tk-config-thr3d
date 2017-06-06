@@ -47,7 +47,11 @@ engines:
       version: v0.3.0
       type: app_store
       name: tk-3dsmaxplus
-    menu_favourites: []
+    menu_favourites:
+    - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
   #
   # -------------------------------------------------
   # Houdini
@@ -65,7 +69,11 @@ engines:
     enable_sg_shelf: true
     debug_logging: false
     enable_sg_menu: true
-    menu_favourites: []
+    menu_favourites:
+    - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
   #
   # -------------------------------------------------
   # maya
@@ -84,6 +92,9 @@ engines:
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
     template_project:
     use_sgtk_as_menu_name: false
 
@@ -106,6 +117,9 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
+    - {app_instance: tk-multi-snapshot, name: Snapshot...}
+    - {app_instance: tk-multi-publish, name: Publish...}
     project_favourite_name: Shotgun Current Project
     use_sgtk_as_menu_name: false
     bin_context_menu: []
@@ -123,7 +137,7 @@ engines:
       tk-multi-workfiles2: '@workfiles2'
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     debug_logging: false
     location:
       version: v1.0.17
