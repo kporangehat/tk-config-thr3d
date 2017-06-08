@@ -50,14 +50,13 @@ class BeforeAppLaunch(tank.Hook):
         # can be done via the parent object
         multi_launchapp = self.parent
 
-        logging.info("Setting Global Variable for THR3d")
+        logging.info("Setting Global Variable for THR3D")
 
         entity = multi_launchapp.context.task
         if not entity:
             entity = multi_launchapp.context.entity
 
         if entity:
-
             type_ = entity.get('type')
             id_ = entity.get('id')
             filters = [['id', 'is', id_]]
@@ -80,7 +79,6 @@ class BeforeAppLaunch(tank.Hook):
         # Engine specific functions
         if multi_launchapp.get_setting("engine") == "tk-nuke":
             logging.info("Running Before Launch Functions for Nuke")
-            logging.info("app_path == > ", app_path)
 
         if multi_launchapp.get_setting("engine") == "tk-houdini":
             logging.info("Running Before Launch Functions for Houdini")
@@ -89,8 +87,3 @@ class BeforeAppLaunch(tank.Hook):
 
         if multi_launchapp.get_setting("engine") == "tk-maya":
             logging.info("Running Before Launch Functions for Maya")
-            logging.info("Running Maya", version)
-            logging.info("app_path == > ", app_path)
-            logging.info("app_args == > ", app_args)
-            logging.info("kwargs == > ", kwargs)
-            logging.info("current_entity == > ", entity)

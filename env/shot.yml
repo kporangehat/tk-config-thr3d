@@ -33,49 +33,6 @@ includes:
 engines:
   #
   # -------------------------------------------------
-  # 3dsmax plus
-  # -------------------------------------------------
-  tk-3dsmaxplus:
-    apps:
-      tk-multi-about: '@about'
-      tk-multi-shotgunpanel: '@shotgunpanel'
-      tk-multi-screeningroom: '@launch_screeningroom'
-      tk-multi-workfiles2: '@workfiles2'
-    compatibility_dialog_min_version: 2017
-    debug_logging: false
-    location:
-      version: v0.3.0
-      type: app_store
-      name: tk-3dsmaxplus
-    menu_favourites:
-    - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
-    - {app_instance: tk-multi-publish, name: Publish...}
-  #
-  # -------------------------------------------------
-  # Houdini
-  # -------------------------------------------------
-  tk-houdini:
-    apps:
-      tk-multi-about: '@about'
-      tk-multi-shotgunpanel: '@shotgunpanel'
-      tk-multi-screeningroom: '@launch_screeningroom'
-      tk-multi-workfiles2: '@workfiles2'
-    location:
-      version: v1.1.0
-      type: app_store
-      name: tk-houdini
-    enable_sg_shelf: true
-    debug_logging: false
-    enable_sg_menu: true
-    menu_favourites:
-    - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
-    - {app_instance: tk-multi-publish, name: Publish...}
-  #
-  # -------------------------------------------------
   # maya
   # -------------------------------------------------
   tk-maya:
@@ -87,14 +44,13 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.7.16
+      version: v0.8.0
       type: app_store
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
-    - {app_instance: tk-multi-publish, name: Publish...}
+
     template_project:
     use_sgtk_as_menu_name: false
 
@@ -112,14 +68,12 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.6.13
+      version: v0.7.0
       type: app_store
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
-    - {app_instance: tk-multi-snapshot, name: Snapshot...}
-    - {app_instance: tk-multi-publish, name: Publish...}
     project_favourite_name: Shotgun Current Project
     use_sgtk_as_menu_name: false
     bin_context_menu: []
@@ -140,7 +94,7 @@ engines:
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     debug_logging: false
     location:
-      version: v1.0.17
+      version: v1.1.5
       type: app_store
       name: tk-photoshopcc
   #
@@ -149,12 +103,9 @@ engines:
   # -------------------------------------------------
   tk-shell:
     apps:
-      tk-multi-launch3dsmax: '@launch_3dsmax'
-      tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
-      tk-multi-screeningroom: '@launch_screeningroom'
     location:
       version: v0.5.1
       type: app_store

@@ -33,7 +33,7 @@ engines:
       tk-multi-about: '@about'
       tk-multi-loader2:
         action_mappings:
-          3dsmax Scene: [import, reference]
+          3dsmax Scene: [import]
           Alembic Cache: [import]
         actions_hook: '{self}/tk-3dsmaxplus_actions.py'
         download_thumbnails: true
@@ -59,7 +59,7 @@ engines:
           publish_filters: []
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.15.1
+          version: v1.16.3
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -143,7 +143,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.3.3
+          version: v1.4.1
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -171,7 +171,7 @@ engines:
     compatibility_dialog_min_version: 2017
     debug_logging: false
     location:
-      version: v0.3.0
+      version: v0.4.0
       type: app_store
       name: tk-3dsmaxplus
     menu_favourites:
@@ -395,7 +395,7 @@ engines:
           name: tk-multi-breakdown
       tk-multi-loader2:
         action_mappings:
-          Maya Scene: [import, reference]
+          Maya Scene: [import]
           Photoshop Image: [texture_node]
           Rendered Image: [texture_node]
           Alembic Cache: [import]
@@ -416,7 +416,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.15.1
+          version: v1.16.3
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -476,7 +476,7 @@ engines:
       tk-multi-shotgunpanel:
         action_mappings:
           PublishedFile:
-          - actions: [reference, import]
+          - actions: [import]
             filters: {published_file_type: Maya Scene}
           - actions: [texture_node]
             filters: {published_file_type: Rendered Image}
@@ -489,7 +489,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-maya_actions.py'
         location:
-          version: v1.3.3
+          version: v1.4.1
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -540,7 +540,7 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.7.16
+      version: v0.8.0
       type: app_store
       name: tk-maya
     menu_favourites:
@@ -595,7 +595,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.15.1
+          version: v1.16.3
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -679,7 +679,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-nuke_actions.py'
         location:
-          version: v1.3.3
+          version: v1.4.1
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -781,7 +781,7 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.6.13
+      version: v0.7.0
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -970,7 +970,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.15.1
+          version: v1.16.3
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -993,7 +993,7 @@ engines:
             filters: {}
         actions_hook: '{self}/general_actions.py:{self}/tk-nuke_actions.py'
         location:
-          version: v1.3.3
+          version: v1.4.1
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1011,7 +1011,7 @@ engines:
     compatibility_dialog_min_version: 10
     debug_logging: false
     location:
-      version: v0.6.13
+      version: v0.7.0
       type: app_store
       name: tk-nuke
     menu_favourites:
@@ -1053,7 +1053,7 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.15.1
+          version: v1.16.3
           type: app_store
           name: tk-multi-loader2
         menu_name: Load
@@ -1130,7 +1130,7 @@ engines:
         version_compare_ignore_fields: []
       tk-multi-shotgunpanel:
         location:
-          version: v1.3.3
+          version: v1.4.1
           type: app_store
           name: tk-multi-shotgunpanel
         shotgun_fields_hook: '{self}/shotgun_fields.py'
@@ -1163,7 +1163,7 @@ engines:
     - {app_instance: tk-multi-pythonconsole, name: Shotgun Python Console...}
     debug_logging: false
     location:
-      version: v1.0.17
+      version: v1.1.5
       type: app_store
       name: tk-photoshopcc
   #

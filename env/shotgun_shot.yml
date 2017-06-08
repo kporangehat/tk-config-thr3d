@@ -30,13 +30,9 @@ includes:
 engines:
   tk-shotgun:
     apps:
-      tk-multi-launch3dsmax: '@launch_3dsmax'
-      tk-multi-launchhoudini: '@launch_houdini'
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
-      tk-multi-launchillustratorcc: '@launch_illustratorcc'
-      tk-multi-launchcreaform: '@launch_creaform'
       tk-shotgun-folders:
         deny_permissions: []
         deny_platforms: []
