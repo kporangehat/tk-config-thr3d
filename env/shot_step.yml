@@ -42,15 +42,13 @@ engines:
           Maya Scene: [import]
           Photoshop Image: [texture_node]
           Rendered Image: [texture_node]
-          Alembic Cache: [import]
-          OBJ: [import]
         actions_hook: '{self}/tk-maya_actions.py'
         download_thumbnails: true
         entities:
-        - caption: Assets
+        - caption: Shot Assets
           entity_type: Asset
           filters:
-          - [project, is, '{context.project}']
+          - [shots, in, '{context.entity}']
           hierarchy: [sg_asset_type, code]
         - caption: Shots
           entity_type: Shot
