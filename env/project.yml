@@ -374,7 +374,6 @@ engines:
       tk-multi-launchnukestudio: '@launch_nukestudio'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-launchillustratorcc: '@launch_illustratorcc'
-      tk-multi-screeningroom: '@launch_screeningroom'
     location:
       version: v0.5.1
       type: app_store

@@ -193,7 +193,6 @@ engines:
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
-      tk-multi-screeningroom: '@launch_screeningroom'
       tk-shotgun-launchmari: '@launch_mari'
       tk-multi-launchcreaform: '@launch_creaform'
     location:

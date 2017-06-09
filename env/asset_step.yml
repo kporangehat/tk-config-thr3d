@@ -453,7 +453,7 @@ engines:
           publish_template: asset_alembic_cache
           required: false
           scene_item_type: mesh_group
-          selected: false
+          selected: true
           tank_type: Alembic Cache
         - description: Publish OBJ
           display_group: Obj
@@ -463,7 +463,7 @@ engines:
           publish_template: asset_obj_cache
           required: false
           scene_item_type: mesh_group
-          selected: false
+          selected: true
           tank_type: OBJ
         template_work: 3d_asset_work_maya
       tk-multi-setframerange:
