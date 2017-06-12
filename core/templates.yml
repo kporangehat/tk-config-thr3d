@@ -35,6 +35,8 @@ keys:
         type: str
     Step:
         type: str
+    content:
+        type: str
     sg_asset_type:
         type: str
     Asset:
@@ -292,19 +294,19 @@ paths:
     # Photoshop Asset
 
     2d_asset_work_photoshop:
-        definition: '@2d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]{ps_extension}'
+        definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{ps_extension}'
         root_name: 'primary'
 
     2d_asset_publish_photoshop:
-        definition: '@2d_asset_publish/{Asset}_{Step}_{version}.psd'
+        definition: '@2d_asset_publish/{Asset}[_{content}]_{Step}_{version}.psd'
         root_name: 'primary'
 
     2d_asset_snapshot_photoshop:
-        definition: '@2d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.psd'
+        definition: '@2d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.psd'
         root_name: 'primary'
 
     2d_asset_review_photoshop:
-        definition: '@2d_asset_work/{Asset}_{Step}_{version}.jpeg'
+        definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.jpeg'
         root_name: 'primary'
 
     # -------------------------------------
@@ -333,23 +335,23 @@ paths:
     # Maya Asset
 
     3d_asset_work_maya:
-        definition: '@3d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]{maya_extension}'
+        definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{maya_extension}'
         root_name: 'primary'
 
     3d_asset_publish_maya:
-        definition: '@3d_asset_publish/{Asset}_{Step}_{version}.{maya_extension}'
+        definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{maya_extension}'
         root_name: 'primary'
 
     3d_asset_snapshot_maya:
-        definition: '@3d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.{maya_extension}'
+        definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{maya_extension}'
         root_name: 'primary'
 
     asset_alembic_cache:
-        definition: '@3d_asset_cache/{Asset}_{Step}_{version}.abc'
+        definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_{version}.abc'
         root_name: 'primary'
 
     asset_obj_cache:
-        definition: '@3d_asset_cache/{Asset}_{Step}_{version}.obj'
+        definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_{version}.obj'
         root_name: 'primary'
 
     # -------------------------------------
@@ -370,15 +372,15 @@ paths:
     # 3ds Max Asset
 
     3d_asset_work_max:
-        definition: '@3d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]{max_extension}'
+        definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{max_extension}'
         root_name: 'primary'
 
     3d_asset_publish_max:
-        definition: '@3d_asset_publish/{Asset}_{Step}_{version}.{max_extension}'
+        definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{max_extension}'
         root_name: 'primary'
 
     3d_asset_snapshot_max:
-        definition: '@3d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.{max_extension}'
+        definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{max_extension}'
         root_name: 'primary'
 
     # -------------------------------------
@@ -411,27 +413,27 @@ paths:
     # Houdini Asset
 
     3d_asset_work_houdini:
-        definition: '@3d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]{houdini_extension}'
+        definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{houdini_extension}'
         root_name: 'primary'
 
     3d_asset_publish_houdini:
-        definition: '@3d_asset_publish/{Asset}_{Step}_{version}.{houdini_extension}'
+        definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{houdini_extension}'
         root_name: 'primary'
 
     3d_asset_snapshot_houdini:
-        definition: '@3d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.{houdini_extension}'
+        definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{houdini_extension}'
         root_name: 'primary'
 
     3d_asset_houdini_ifd:
-        definition: '@3d_asset_cache/{Asset}_{Step}_ifd_{SEQ}.{version}.{houdini_extension}'
+        definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_ifd_{SEQ}.{version}.{houdini_extension}'
         root_name: 'primary'
 
     3d_asset_houdini_dcn:
-        definition: '@3d_asset_cache/{Asset}_{Step}_dcn_{SEQ}.{version}.{houdini_extension}'
+        definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_dcn_{SEQ}.{version}.{houdini_extension}'
         root_name: 'primary'
 
     3d_asset_snapshot_extra_plane:
-        definition: '@3d_asset_cache/{Asset}_{Step}_plane_{SEQ}.{version}.{houdini_extension}'
+        definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_plane_{SEQ}.{version}.{houdini_extension}'
         root_name: 'primary'
 
     # -------------------------------------
@@ -488,51 +490,51 @@ paths:
     # Nuke Asset
 
     2d_asset_work_nuke:
-        definition: '@2d_asset_work/{Asset}_{Step}_{version}.[{iteration}.]nk'
+        definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]nk'
         root_name: 'primary'
 
     2d_asset_publish_nuke:
-        definition: '@2d_asset_publish/{Asset}_{Step}_{version}.nk'
+        definition: '@2d_asset_publish/{Asset}[_{content}]_{Step}_{version}.nk'
         root_name: 'primary'
 
     2d_asset_snapshot_nuke:
-        definition: '@2d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.nk'
+        definition: '@2d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.nk'
         root_name: 'primary'
 
     asset_review_mov_nuke:
-        definition: '@asset_review_mov/{Asset}_{Step}_{version}.[{iteration}.]mov'
+        definition: '@asset_review_mov/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]mov'
         root_name: 'primary'
 
     2d_nuke_asset_render_mono_dpx:
-        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}_{Step}.{SEQ}.dpx'
+        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.dpx'
         root_name: 'primary'
 
     2d_nuke_asset_publish_render_mono_dpx:
-        definition: '@asset_root/img/comp/v{version}/{Asset}_{Step}.{SEQ}.dpx'
+        definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.dpx'
         root_name: 'primary'
 
     2d_nuke_asset_render_exr:
-        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}_{Step}.{SEQ}.exr'
+        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.exr'
         root_name: 'primary'
 
     2d_nuke_asset_publish_render_exr:
-        definition: '@asset_root/img/comp/v{version}/{Asset}_{Step}.{SEQ}.exr'
+        definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.exr'
         root_name: 'primary'
 
     2d_nuke_asset_render_png:
-        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}_{Step}.{SEQ}.png'
+        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.png'
         root_name: 'primary'
 
     2d_nuke_asset_publish_render_png:
-        definition: '@asset_root/img/comp/v{version}/{Asset}_{Step}.{SEQ}.png'
+        definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.png'
         root_name: 'primary'
 
     2d_nuke_asset_render_tiff:
-        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}_{Step}.{SEQ}.tiff'
+        definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.tiff'
         root_name: 'primary'
 
     2d_nuke_asset_publish_render_tiff:
-        definition: '@asset_root/img/comp/v{version}/{Asset}_{Step}.{SEQ}.tiff'
+        definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.tiff'
         root_name: 'primary'
 
     # -------------------------------------
@@ -545,7 +547,7 @@ paths:
     # Render Images Asset
 
     asset_render_img_work:
-        definition: '@asset_review_ren/{Asset}_{Step}_{SEQ}.{version}.exr'
+        definition: '@asset_review_ren/{Asset}[_{content}]_{Step}_{SEQ}.{version}.exr'
         root_name: 'primary'
 
     # ##########################################################################################
@@ -566,8 +568,8 @@ strings:
     nuke_shot_version_name: "{Shot}_{name}_{nuke.output}_v{version}.{iteration}"
     nuke_quick_shot_version_name: "{Shot}_{name}_quick_{iteration}"
 
-    nuke_asset_version_name: "{Asset}_{name}_{nuke.output}_v{version}.{iteration}"
-    nuke_quick_asset_version_name: "{Asset}_{name}_quick_{iteration}"
+    nuke_asset_version_name: "{Asset}[_{content}]_{name}_{nuke.output}_v{version}.{iteration}"
+    nuke_quick_asset_version_name: "{Asset}[_{content}]_{name}_quick_{iteration}"
 
     # define how new Mari projects should be named
     # mari_asset_project_name: "{mari.project_name} - Asset {asset_name}, {task_name}"
