@@ -46,28 +46,24 @@ class BeforeAppLaunch(tank.Hook):
 
         """
 
+        logging.info("Setting Up for THR3D Pipeline")
+
         # accessing the current context (current shot, etc)
         # can be done via the parent object
         multi_launchapp = self.parent
 
-        logging.info("Setting Global Variable for THR3D")
+        project_entity = multi_launchapp.context.project
+        user_entity = multi_launchapp.context.user
+        task_entity = multi_launchapp.context.task
 
-        entity = multi_launchapp.context.task
-        if not entity:
-            entity = multi_launchapp.context.entity
+        # Start time logging
+        project_util.start_timelog_clock(project=project_entity,
+                                         task=task_entity,
+                                         user=user_entity)
 
-        if entity:
-            type_ = entity.get('type')
-            id_ = entity.get('id')
-            filters = [['id', 'is', id_]]
-
-            # find the current task info
-            task = project_util.get_entity(filters=filters,
-                                           entity_type=type_,
-                                           find_="one")
-
-            # Change the task's status
-            result = project_util.set_status(task, 'ip')
+        # Change the task's status
+        if task_entity:
+            result = project_util.set_status(task_entity, 'ip')
             if result:
                 logging.info("Updated the status of entity: {} - id: {} to "
                              "{}".format(result.get('name'),
