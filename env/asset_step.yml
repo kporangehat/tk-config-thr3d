@@ -168,6 +168,10 @@ engines:
           version: v1.0.9
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-timelog:
+        location:
+          path: A:\Shotgun\studio\install\apps\tk-multi-timelog
+          type: dev
     compatibility_dialog_min_version: 2017
     debug_logging: false
     location:
@@ -368,6 +372,10 @@ engines:
           version: v1.0.9
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-timelog:
+        location:
+          path: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\apps\tk-multi-timelog
+          type: dev
     debug_logging: false
     enable_sg_shelf: true
     enable_sg_menu: true
@@ -537,6 +545,10 @@ engines:
           version: v1.0.9
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-timelog:
+        location:
+          path: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\apps\tk-multi-timelog
+          type: dev
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
@@ -777,6 +789,10 @@ engines:
           settings: {}
           tank_type: Rendered Image
           tile_color: []
+      tk-multi-timelog:
+        location:
+          path: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\apps\tk-multi-timelog
+          type: dev
     compatibility_dialog_min_version: 10
     debug_logging: false
     favourite_directories: []
@@ -1155,6 +1171,10 @@ engines:
           version: v1.0.9
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-timelog:
+        location:
+          path: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\apps\tk-multi-timelog
+          type: dev
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
