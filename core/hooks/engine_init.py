@@ -19,6 +19,11 @@ import logging
 
 from tank import Hook
 
+# TODO: Once system added this to environment, use the following:
+# sys.path.append(os.environ['THR3D_AGNOSTIC'])
+sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
+from tk_utils import tk_utils
+
 
 class EngineInit(Hook):
 
@@ -52,3 +57,28 @@ class EngineInit(Hook):
                                     "Plugin.\n{}".format(str(e)))
             except ImportError:
                 logging.warning("Was not able to import PyMel.")
+
+            # 4- Load the latest working file if it's found
+            entity_name = engine.context.entity.get('name')
+            all_working_files = engine.sgtk.paths_from_template(
+                engine.sgtk.templates["3d_asset_work_maya"],
+                engine.context.task)
+
+            context_files = [p for p in all_working_files if entity_name in p]
+            print "*" * 100
+            from pprint import pprint as p
+            p(context_files)
+            latest_file = tk_utils.latest_work_file(context_files, engine.sgtk)
+            print "*" * 100
+            print latest_file
+            print "*" * 100
+
+
+            if latest_file:
+                file_name = os.path.basename(latest_file)
+                pm.inViewMessage(
+                    amg='Loading the latest work file: '
+                        '<hl>{}</hl> '.format(file_name),
+                    pos='midCenter',
+                    fade=True)
+                pm.openFile(latest_file, force=True)
