@@ -65,14 +65,7 @@ class EngineInit(Hook):
                 engine.context.task)
 
             context_files = [p for p in all_working_files if entity_name in p]
-            print "*" * 100
-            from pprint import pprint as p
-            p(context_files)
             latest_file = tk_utils.latest_work_file(context_files, engine.sgtk)
-            print "*" * 100
-            print latest_file
-            print "*" * 100
-
 
             if latest_file:
                 file_name = os.path.basename(latest_file)
