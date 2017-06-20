@@ -60,18 +60,29 @@ class EngineInit(Hook):
 
             # 4- Load the latest working file if it's found
             entity_name = engine.context.entity.get('name')
-            all_working_files = engine.sgtk.paths_from_template(
-                engine.sgtk.templates["3d_asset_work_maya"],
-                engine.context.task)
-
-            context_files = [p for p in all_working_files if entity_name in p]
-            latest_file = tk_utils.latest_work_file(context_files, engine.sgtk)
-
-            if latest_file:
-                file_name = os.path.basename(latest_file)
-                pm.inViewMessage(
-                    amg='Loading the latest work file: '
-                        '<hl>{}</hl> '.format(file_name),
-                    pos='midCenter',
-                    fade=True)
-                pm.openFile(latest_file, force=True)
+            task_name = engine.context.task.get('name')
+            if task_name:
+                # Gathering all the work files
+                all_working_files = engine.sgtk.paths_from_template(
+                    engine.sgtk.templates["3d_asset_work_maya"],
+                    engine.context.task)
+                # Filter out the scene that are not related to this task
+                context_files = []
+                for p in all_working_files:
+                    if entity_name in p and task_name in p:
+                        context_files.append(p)
+                # Get the latest version from all paths
+                latest_file = tk_utils.latest_work_file(context_files,
+                                                        engine.sgtk)
+                # If the latest file exists, open the scene
+                if latest_file:
+                    file_name = os.path.basename(latest_file)
+                    pm.inViewMessage(
+                        amg='Loading the latest work file: '
+                            '<hl>{}</hl> '.format(file_name),
+                        pos='midCenter',
+                        fade=True)
+                    pm.openFile(latest_file, force=True)
+                else:
+                    logging.info("No working file was found "
+                                 "for this Task to load")
