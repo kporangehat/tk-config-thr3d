@@ -22,6 +22,7 @@ from tank import Hook
 # TODO: Once system added this to environment, use the following:
 # sys.path.append(os.environ['THR3D_AGNOSTIC'])
 sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
+sys.path.append(r'\\isln-smb\thr3dcgi_config\Maya')
 from config_utils import template_name
 
 
@@ -43,6 +44,7 @@ class EngineInit(Hook):
                 import pymel.core as pm
                 logging.info("Imported PyMel as pm")
                 plugs = pm.pluginInfo(query=True, listPlugins=True)
+                from maya_utils import cpg_camera_creation
                 try:
                     # 2- Load V-ray
                     if "vrayformaya" not in plugs:
@@ -57,8 +59,19 @@ class EngineInit(Hook):
                                     "Plugin.\n{}".format(str(e)))
             except ImportError:
                 logging.warning("Was not able to import PyMel.")
+            # 4- Load the THR3D Menu
+            thr3d_menu = pm.menu("THR3D",
+                                 label="THR3D",
+                                 parent=pm.melGlobals["gMainWindow"],
+                                 tearOff=True)
 
-            # 4- Load the latest working file if it's found
+            # 4.1- CPG Camera Creation tool menu
+            pm.menuItem("cpg_camera",
+                        label="CPG Camera Creation",
+                        parent=thr3d_menu,
+                        command=cpg_camera_creation.Create_Consumer_Product_Cams)
+
+            # 5- Load the latest working file if it's found
             entity_name = engine.context.entity.get('name')
             task_name = engine.context.task.get('name')
             step = engine.context.step
