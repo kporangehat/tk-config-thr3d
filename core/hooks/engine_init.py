@@ -22,7 +22,6 @@ from tank import Hook
 # TODO: Once system added this to environment, use the following:
 # sys.path.append(os.environ['THR3D_AGNOSTIC'])
 sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
-from tk_utils import tk_utils
 from config_utils import template_name
 
 
@@ -84,10 +83,9 @@ class EngineInit(Hook):
                     if entity_name in p and step_short_name in p:
                         context_files.append(p)
                 # Get the latest version from all paths
-                latest_file = tk_utils.latest_work_file(context_files,
-                                                        engine.sgtk)
-                # If the latest file exists, open the scene
-                if latest_file:
+                latest_file = sorted(context_files)[-1]
+
+                if os.path.exists(latest_file):
                     file_name = os.path.basename(latest_file)
                     pm.inViewMessage(
                         amg='Loading the latest work file: '
