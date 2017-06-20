@@ -23,6 +23,7 @@ from tank import Hook
 # sys.path.append(os.environ['THR3D_AGNOSTIC'])
 sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
 from tk_utils import tk_utils
+from config_utils import template_name
 
 
 class EngineInit(Hook):
@@ -61,7 +62,18 @@ class EngineInit(Hook):
             # 4- Load the latest working file if it's found
             entity_name = engine.context.entity.get('name')
             task_name = engine.context.task.get('name')
-            if task_name:
+            step = engine.context.step
+            step_id = step.get('id')
+            find_step = engine.sgtk.shotgun.find_one('Step',
+                                                     filters=[['id', 'is',
+                                                               step_id]],
+                                                     fields=['short_name'])
+            step_short_name = find_step.get('short_name')
+
+            if step_short_name:
+                if task_name not in template_name.DEFAULT_TASK_NAME:
+                    step_short_name = task_name + "_" + step_short_name
+
                 # Gathering all the work files
                 all_working_files = engine.sgtk.paths_from_template(
                     engine.sgtk.templates["3d_asset_work_maya"],
@@ -69,7 +81,7 @@ class EngineInit(Hook):
                 # Filter out the scene that are not related to this task
                 context_files = []
                 for p in all_working_files:
-                    if entity_name in p and task_name in p:
+                    if entity_name in p and step_short_name in p:
                         context_files.append(p)
                 # Get the latest version from all paths
                 latest_file = tk_utils.latest_work_file(context_files,
@@ -86,3 +98,7 @@ class EngineInit(Hook):
                 else:
                     logging.info("No working file was found "
                                  "for this Task to load")
+            else:
+                logging.info("Failed to find the latest work file since the "
+                             "can't access the Step. "
+                             "Step: {}".format(find_step))
