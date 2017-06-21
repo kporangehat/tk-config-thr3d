@@ -96,16 +96,20 @@ class EngineInit(Hook):
                     if entity_name in p and step_short_name in p:
                         context_files.append(p)
                 # Get the latest version from all paths
-                latest_file = sorted(context_files)[-1]
+                if context_files:
+                    latest_file = sorted(context_files)[-1]
 
-                if os.path.exists(latest_file):
-                    file_name = os.path.basename(latest_file)
-                    pm.inViewMessage(
-                        amg='Loading the latest work file: '
-                            '<hl>{}</hl> '.format(file_name),
-                        pos='midCenter',
-                        fade=True)
-                    pm.openFile(latest_file, force=True)
+                    if os.path.exists(latest_file):
+                        file_name = os.path.basename(latest_file)
+                        pm.inViewMessage(
+                            amg='Loading the latest work file: '
+                                '<hl>{}</hl> '.format(file_name),
+                            pos='midCenter',
+                            fade=True)
+                        pm.openFile(latest_file, force=True)
+                    else:
+                        logging.info("The working file was not found on "
+                                     "disk: {}".format(latest_file))
                 else:
                     logging.info("No working file was found "
                                  "for this Task to load")
