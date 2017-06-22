@@ -24,6 +24,7 @@ from tank import Hook
 sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
 sys.path.append(r'\\isln-smb\thr3dcgi_config\Maya')
 from config_utils import template_name
+from common import find_menu_item
 
 
 class EngineInit(Hook):
@@ -37,6 +38,17 @@ class EngineInit(Hook):
         # Setting an global environment
         os.environ['DIVISION'] = "THR3D"
 
+        # Get context information
+        entity_name = engine.context.entity.get('name')
+        task_name = engine.context.task.get('name')
+        step = engine.context.step
+        step_id = step.get('id')
+        find_step = engine.sgtk.shotgun.find_one('Step',
+                                                 filters=[['id', 'is',
+                                                           step_id]],
+                                                 fields=['short_name'])
+        step_short_name = find_step.get('short_name')
+
         # After Maya load do the following tasks
         if engine.name == "tk-maya":
             try:
@@ -44,7 +56,7 @@ class EngineInit(Hook):
                 import pymel.core as pm
                 logging.info("Imported PyMel as pm")
                 plugs = pm.pluginInfo(query=True, listPlugins=True)
-                from maya_utils import cpg_camera_creation
+                # from maya_utils import cpg_camera_creation
                 try:
                     # 2- Load V-ray
                     if "vrayformaya" not in plugs:
@@ -58,30 +70,36 @@ class EngineInit(Hook):
                     logging.warning("Was not able to lead V-ray "
                                     "Plugin.\n{}".format(str(e)))
             except ImportError:
+                pm = None
                 logging.warning("Was not able to import PyMel.")
-            # 4- Load the THR3D Menu
-            thr3d_menu = pm.menu("THR3D",
-                                 label="THR3D",
-                                 parent=pm.melGlobals["gMainWindow"],
-                                 tearOff=True)
 
-            # 4.1- CPG Camera Creation tool menu
-            pm.menuItem("cpg_camera",
-                        label="CPG Camera Creation",
-                        parent=thr3d_menu,
-                        command=cpg_camera_creation.Create_Consumer_Product_Cams)
+            # 4- Load the THR3D Menu
+            # TODO: The Maya script path should come from a global variable
+            menu_items = find_menu_item.find_commands(source_path=r"\\isln-smb\thr3dcgi_config\Maya")
+
+            if menu_items:
+                thr3d_menu = pm.menu("THR3D",
+                                     label="THR3D",
+                                     parent=pm.melGlobals["gMainWindow"],
+                                     tearOff=True)
+                for menu_item in menu_items:
+                    menu = menu_items.get(menu_item)
+                    command_env = menu.get('env')
+                    # We don't want to load the Dev environment tools
+                    if command_env == "dev":
+                        continue
+                    command_name = menu.get('command')
+                    command_path = menu.get('path')
+                    command_label = menu.get('label')
+
+                    sys.path.append(command_path)
+                    command = __import__(command_name)
+                    pm.menuItem(command_name,
+                                label=command_label,
+                                parent=thr3d_menu,
+                                command=command.execute)
 
             # 5- Load the latest working file if it's found
-            entity_name = engine.context.entity.get('name')
-            task_name = engine.context.task.get('name')
-            step = engine.context.step
-            step_id = step.get('id')
-            find_step = engine.sgtk.shotgun.find_one('Step',
-                                                     filters=[['id', 'is',
-                                                               step_id]],
-                                                     fields=['short_name'])
-            step_short_name = find_step.get('short_name')
-
             if step_short_name:
                 if task_name not in template_name.DEFAULT_TASK_NAME:
                     step_short_name = task_name + "_" + step_short_name
