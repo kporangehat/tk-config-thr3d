@@ -38,17 +38,6 @@ class EngineInit(Hook):
         # Setting an global environment
         os.environ['DIVISION'] = "THR3D"
 
-        # Get context information
-        entity_name = engine.context.entity.get('name')
-        task_name = engine.context.task.get('name')
-        step = engine.context.step
-        step_id = step.get('id')
-        find_step = engine.sgtk.shotgun.find_one('Step',
-                                                 filters=[['id', 'is',
-                                                           step_id]],
-                                                 fields=['short_name'])
-        step_short_name = find_step.get('short_name')
-
         # After Maya load do the following tasks
         if engine.name == "tk-maya":
             try:
@@ -72,6 +61,17 @@ class EngineInit(Hook):
             except ImportError:
                 pm = None
                 logging.warning("Was not able to import PyMel.")
+
+            # Get context information
+            entity_name = engine.context.entity.get('name')
+            task_name = engine.context.task.get('name')
+            step = engine.context.step
+            step_id = step.get('id')
+            find_step = engine.sgtk.shotgun.find_one('Step',
+                                                     filters=[['id', 'is',
+                                                               step_id]],
+                                                     fields=['short_name'])
+            step_short_name = find_step.get('short_name')
 
             # 4- Load the THR3D Menu
             # TODO: The Maya script path should come from a global variable
