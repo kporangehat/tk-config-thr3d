@@ -58,8 +58,6 @@ engines:
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-launchillustratorcc: '@launch_illustratorcc'
       tk-multi-launchcreaform: '@launch_creaform'
-#      Commenting out the screenroom app based on Brandon's request
-#      tk-multi-screeningroom: '@launch_screeningroom'
     collapse_rules:
     - {button_label: $app, match: Launch $app $version, menu_label: Launch $version}
     debug_logging: false

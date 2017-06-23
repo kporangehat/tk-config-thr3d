@@ -17,14 +17,28 @@ import os
 import sys
 import logging
 
+THR3D_CGI_CONFIG = os.environ.get('THR3D_CGI_CONFIG',
+                                      r'\\isln-smb\thr3dcgi_config')
+
+if not os.path.exists(THR3D_CGI_CONFIG):
+    logging.error("Can't access to config path: {}".format(THR3D_CGI_CONFIG))
+    raise ValueError
+
+if THR3D_CGI_CONFIG not in sys.path:
+    sys.path.append(THR3D_CGI_CONFIG)
+
+try:
+    import Agnostic
+except ImportError:
+    logging.error("THR3D was not able to load the Agnostic")
+    raise ImportError
+
 from tank import Hook
 
-# TODO: Once system added this to environment, use the following:
-# sys.path.append(os.environ['THR3D_AGNOSTIC'])
-sys.path.append(r'\\isln-smb\thr3dcgi_config\Agnostic')
-sys.path.append(r'\\isln-smb\thr3dcgi_config\Maya')
 from config_utils import template_name
 from common import find_menu_item
+from tk_utils import tk_file_handler
+from maya_utils import load_utils as m_load_utils
 
 
 class EngineInit(Hook):
@@ -40,28 +54,6 @@ class EngineInit(Hook):
 
         # After Maya load do the following tasks
         if engine.name == "tk-maya":
-            try:
-                # 1- Load PyMel
-                import pymel.core as pm
-                logging.info("Imported PyMel as pm")
-                plugs = pm.pluginInfo(query=True, listPlugins=True)
-                # from maya_utils import cpg_camera_creation
-                try:
-                    # 2- Load V-ray
-                    if "vrayformaya" not in plugs:
-                        pm.loadPlugin('vrayformaya', quiet=True)
-                        logging.info("Loaded V-ray Plugin")
-                    # 3- Set the renderer to V-Ray
-                    pm.setAttr("defaultRenderGlobals.currentRenderer",
-                               "vray",
-                               type="string")
-                except Exception as e:
-                    logging.warning("Was not able to lead V-ray "
-                                    "Plugin.\n{}".format(str(e)))
-            except ImportError:
-                pm = None
-                logging.warning("Was not able to import PyMel.")
-
             # Get context information
             entity_name = engine.context.entity.get('name')
             task_name = engine.context.task.get('name')
@@ -72,16 +64,39 @@ class EngineInit(Hook):
                                                                step_id]],
                                                      fields=['short_name'])
             step_short_name = find_step.get('short_name')
+            try:
+                # 1- Load PyMel
+                import pymel.core as pm
+                logging.info("Imported PyMel as pm")
+
+                # 2- Load V-ray
+                vray = m_load_utils.load_plugin("vrayformaya")
+                if vray:
+                    # 3- Set the renderer to V-Ray
+                    pm.setAttr("defaultRenderGlobals.currentRenderer",
+                               "vray",
+                               type="string")
+            except ImportError:
+                pm = None
+                logging.warning("Was not able to import PyMel.")
 
             # 4- Load the THR3D Menu
-            # TODO: The Maya script path should come from a global variable
-            menu_items = find_menu_item.find_commands(source_path=r"\\isln-smb\thr3dcgi_config\Maya")
-
+            menu_items = find_menu_item.find_commands(Agnostic.THR3D_MAYA)
             if menu_items:
-                thr3d_menu = pm.menu("THR3D",
-                                     label="THR3D",
-                                     parent=pm.melGlobals["gMainWindow"],
-                                     tearOff=True)
+                # Find/Create THR3D menu
+                try:
+                    pm.menu("THR3D", q=True, label=True)
+                    logging.debug("THR3D menu already exists. Going to clear "
+                                  "the menu items and re-populate it.")
+
+                    pm.menu("THR3D", deleteAllItems=True, edit=True)
+                except RuntimeError:
+                    logging.debug("Creating the THR3D menu.")
+                    pm.menu("THR3D",
+                            label="THR3D",
+                            parent=pm.melGlobals["gMainWindow"],
+                            tearOff=True)
+                # Add item to the menu
                 for menu_item in menu_items:
                     menu = menu_items.get(menu_item)
                     command_env = menu.get('env')
@@ -96,7 +111,7 @@ class EngineInit(Hook):
                     command = __import__(command_name)
                     pm.menuItem(command_name,
                                 label=command_label,
-                                parent=thr3d_menu,
+                                parent="THR3D",
                                 command=command.execute)
 
             # 5- Load the latest working file if it's found
@@ -105,12 +120,16 @@ class EngineInit(Hook):
                     step_short_name = task_name + "_" + step_short_name
 
                 # Gathering all the work files
-                all_working_files = engine.sgtk.paths_from_template(
-                    engine.sgtk.templates["3d_asset_work_maya"],
-                    engine.context.task)
+                work_files = tk_file_handler.get_files("3d_shot_work_maya",
+                                                       engine.context.entity,
+                                                       engine.sgtk)
+                work_files += tk_file_handler.get_files("3d_asset_work_maya",
+                                                        engine.context.entity,
+                                                        engine.sgtk)
+
                 # Filter out the scene that are not related to this task
                 context_files = []
-                for p in all_working_files:
+                for p in work_files:
                     if entity_name in p and step_short_name in p:
                         context_files.append(p)
                 # Get the latest version from all paths

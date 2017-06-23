@@ -138,6 +138,31 @@ launch_maya:
   versions: ['2015', '2017']
   windows_args: ''
   windows_path: '@maya_windows'
+
+#
+# -------------------------------------------------
+# Punch Out
+# -------------------------------------------------
+launch_punch_out:
+  defer_keyword: ''
+  engine: ''
+  extra: {}
+  hook_app_launch: default
+  hook_before_app_launch: punch_out_app
+  icon: ''
+  linux_args: ''
+  linux_path: ''
+  location:
+    version: v0.8.2
+    type: app_store
+    name: tk-multi-launchapp
+  mac_args: ''
+  mac_path: ''
+  menu_name: Punch Out
+  versions: []
+  windows_args: ''
+  windows_path: '@punch_out'
+
 #
 # -------------------------------------------------
 # Nuke

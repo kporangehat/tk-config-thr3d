@@ -75,4 +75,9 @@ rv_mac: /Applications/RV64.app
 rv_win: \\isln-smb\aw_config\Apps\RV\7.1.2\bin\rv.exe
 rv_linux: rv
 
+#
+# Punch out
+#
+punch_out: '\\isln-smb\thr3dcgi_config\Agnostic\tk_tools\tk_punch_out.bat'
+
 

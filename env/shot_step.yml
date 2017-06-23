@@ -34,7 +34,7 @@ engines:
       tk-multi-timelog:
         location:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
-          version: v0.0.2
+          version: v0.1.0
           type: git
       tk-multi-breakdown:
         hook_scene_operations: '{self}/tk-maya_scene_operations.py'
@@ -404,7 +404,7 @@ engines:
       tk-multi-timelog:
         location:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
-          version: v0.0.2
+          version: v0.1.0
           type: git
     compatibility_dialog_min_version: 10
     debug_logging: false
@@ -560,7 +560,7 @@ engines:
       tk-multi-timelog:
         location:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
-          version: v0.0.2
+          version: v0.1.0
           type: git
     shelf_favorites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
@@ -584,6 +584,7 @@ engines:
       tk-multi-launchmaya: '@launch_maya'
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
+      tk-multi-punchout: '@launch_punch_out'
     location:
       version: v0.5.2
       type: app_store

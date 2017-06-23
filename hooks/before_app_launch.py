@@ -20,12 +20,24 @@ import sys
 import logging
 import tank
 
+# TODO: IT needs to add this
+THR3D_CGI_CONFIG = os.environ.get('THR3D_CGI_CONFIG',
+                                  r'\\isln-smb\thr3dcgi_config')
 
-# TODO: Add this to path via systems(This is too hard coded)
-sys.path.append(r"\\isln-smb\thr3dcgi_config\Apps\Python27\Lib\site-packages")
-sys.path.append(r"\\isln-smb\thr3dcgi_config\Agnostic")
+if not os.path.exists(THR3D_CGI_CONFIG):
+    logging.error("Can't access to config path: {}".format(THR3D_CGI_CONFIG))
+    raise ValueError
 
-from shotgun_utils import project_util
+if THR3D_CGI_CONFIG not in sys.path:
+    sys.path.append(THR3D_CGI_CONFIG)
+
+try:
+    import Agnostic
+except ImportError:
+    logging.error("THR3D was not able to load the Agnostic")
+    raise ImportError
+
+from shotgun_utils import time_log_utils, main_utils
 
 
 class BeforeAppLaunch(tank.Hook):
@@ -56,14 +68,14 @@ class BeforeAppLaunch(tank.Hook):
         user_entity = multi_launchapp.context.user
         task_entity = multi_launchapp.context.task
 
-        # Start time logging
-        project_util.start_timelog_clock(project=project_entity,
-                                         task=task_entity,
-                                         user=user_entity)
-
-        # Change the task's status
         if task_entity:
-            result = project_util.set_status(task_entity, 'ip')
+            # Start time logging
+            time_log_utils.start_timelog_clock(project=project_entity,
+                                               task=task_entity,
+                                               user=user_entity)
+
+            # Change the task's status
+            result = main_utils.set_status(task_entity, 'ip')
             if result:
                 logging.info("Updated the status of entity: {} - id: {} to "
                              "{}".format(result.get('name'),
