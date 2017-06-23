@@ -44,7 +44,7 @@ engines:
           name: tk-multi-breakdown
       tk-multi-loader2:
         action_mappings:
-          Maya Scene: [import]
+          Maya Scene: [import, reference]
           Photoshop Image: [texture_node]
           Rendered Image: [texture_node]
         actions_hook: '{self}/tk-maya_actions.py'
