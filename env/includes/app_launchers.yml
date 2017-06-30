@@ -31,11 +31,11 @@ launch_creaform:
   extra: {}
   hook_app_launch: default
   hook_before_app_launch: before_app_launch
-  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\creaform_icon.png'
+  icon: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\creaform_icon.png
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -44,7 +44,6 @@ launch_creaform:
   versions: []
   windows_args: ''
   windows_path: '@creaform_windows'
-
 #
 # -------------------------------------------------
 # 3dsmax
@@ -59,12 +58,12 @@ launch_3dsmax:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch 3dsmax {version}'
+  menu_name: Launch 3dsmax {version}
   versions: ['2012', '2016', '2017']
   windows_args: ''
   windows_path: '@3dsmax_windows'
@@ -82,7 +81,7 @@ launch_houdini:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -105,7 +104,7 @@ launch_mari:
   linux_args: ''
   linux_path: '@mari_linux'
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -129,16 +128,15 @@ launch_maya:
   linux_args: ''
   linux_path: '@maya_linux'
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch Maya {version}'
+  menu_name: Launch Maya {version}
   versions: ['2015', '2017']
   windows_args: ''
   windows_path: '@maya_windows'
-
 #
 # -------------------------------------------------
 # Punch Out
@@ -153,7 +151,7 @@ launch_punch_out:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -162,7 +160,6 @@ launch_punch_out:
   versions: []
   windows_args: ''
   windows_path: '@punch_out'
-
 #
 # -------------------------------------------------
 # Nuke
@@ -177,13 +174,13 @@ launch_nuke:
   linux_args: ''
   linux_path: '@nuke_linux'
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@nuke_mac'
-  menu_name: 'Launch Nuke {version}'
-  versions: ['(10.5)v4', '(9.0)v7']
+  menu_name: Launch Nuke {version}
+  versions: [(10.5)v4, (9.0)v7]
   windows_args: ''
   windows_path: '@nuke_windows'
 #
@@ -200,13 +197,13 @@ launch_nukestudio:
   linux_args: --studio
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch NukeStudio {version}'
-  versions: ['(10.5)v4', '(9.0)v7']
+  menu_name: Launch NukeStudio {version}
+  versions: [(10.5)v4, (9.0)v7]
   windows_args: --studio
   windows_path: '@nukestudio_windows'
 #
@@ -223,7 +220,7 @@ launch_photoshopcc:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -242,11 +239,11 @@ launch_illustratorcc:
   extra: {}
   hook_app_launch: default
   hook_before_app_launch: before_app_launch
-  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\illustrator_icon.png'
+  icon: \\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\illustrator_icon.png
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.3
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -270,3 +267,9 @@ launch_screeningroom:
   rv_path_mac: '@rv_mac'
   rv_path_windows: '@rv_win'
   init_hook: '{config}/sr_launch_hook.py'
+frameworks:
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      version: v5.2.1
+      type: app_store
+      name: tk-framework-shotgunutils
