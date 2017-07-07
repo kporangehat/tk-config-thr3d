@@ -44,7 +44,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.1
+          version: v0.10.4.2
           type: git
         primary_description: Publish and version up the current scene
         primary_display_name: Scene File Publish
@@ -116,7 +116,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.1
+          version: v0.9.6.2
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -221,7 +221,7 @@ engines:
     enable_sg_shelf: true
     enable_sg_menu: true
     location:
-      version: v1.2.1
+      version: v1.2.2
       type: app_store
       name: tk-houdini
     menu_favourites:
@@ -285,7 +285,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.1
+          version: v0.10.4.2
           type: git
         primary_description: Publish and version up the current Maya scene
         primary_display_name: Maya Publish
@@ -369,8 +369,9 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          path: U:\ajafargholi\APPS_SANDBOX\tk-multi-workfiles2
-          type: dev
+          path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
+          version: v0.9.6.2
+          type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -393,7 +394,7 @@ engines:
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
-      version: v0.8.0
+      version: v0.8.1
       type: app_store
       name: tk-maya
     menu_favourites:
@@ -463,7 +464,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.1
+          version: v0.10.4.2
           type: git
         primary_description: Publishes and versions up the current Nuke script.
         primary_display_name: Nuke Publish
@@ -564,7 +565,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.1
+          version: v0.9.6.2
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -621,7 +622,7 @@ engines:
     debug_logging: false
     favourite_directories: []
     location:
-      version: v0.7.0
+      version: v0.7.2
       type: app_store
       name: tk-nuke
     menu_favourites:

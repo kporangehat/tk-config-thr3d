@@ -35,7 +35,7 @@ launch_creaform:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -58,7 +58,7 @@ launch_3dsmax:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -81,7 +81,7 @@ launch_houdini:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -104,7 +104,7 @@ launch_mari:
   linux_args: ''
   linux_path: '@mari_linux'
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -128,7 +128,7 @@ launch_maya:
   linux_args: ''
   linux_path: '@maya_linux'
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -151,7 +151,7 @@ launch_punch_out:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -174,7 +174,7 @@ launch_nuke:
   linux_args: ''
   linux_path: '@nuke_linux'
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -197,7 +197,7 @@ launch_nukestudio:
   linux_args: --studio
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -220,7 +220,7 @@ launch_photoshopcc:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -243,7 +243,7 @@ launch_illustratorcc:
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.9.3
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
