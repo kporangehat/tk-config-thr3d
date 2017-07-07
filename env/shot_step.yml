@@ -483,8 +483,20 @@ engines:
         primary_publish_template: 2d_shot_publish_photoshop
         primary_scene_item_type: work_file
         primary_tank_type: Photoshop Image
-        secondary_outputs: []
-        template_work: 2d_shot_work_photoshop
+        secondary_outputs:
+        - description: Publish Each Layer as a Separate PNG
+          allow_taskless_publishes: true
+          expand_single_items: true
+          display_group: PNG
+          display_name: PNG Publish
+          icon: icons/publish_photoshop_layer_png.png
+          name: png_publish
+          publish_template: 2d_asset_publish_png_photoshop
+          required: false
+          selected: true
+          tank_type: PNG Image
+          scene_item_type: png_images
+        template_work: 2d_shot_publish_png_photoshop
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-snapshot:
         hook_copy_file: default

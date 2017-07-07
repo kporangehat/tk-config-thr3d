@@ -235,6 +235,10 @@ paths:
         definition: '@shot_root/img/ren'
         root_name: 'primary'
 
+    shot_review_tex:
+        definition: '@shot_root/img/tex'
+        root_name: 'primary'
+
     ##########################################################################################
     # Asset level paths
     #
@@ -273,6 +277,10 @@ paths:
         definition: '@asset_root/img/ren'
         root_name: 'primary'
 
+    asset_review_tex:
+        definition: '@asset_root/img/tex'
+        root_name: 'primary'
+
     # ----------------------------------------------------------------------------------------
     # DCC-specific templates
 
@@ -291,6 +299,10 @@ paths:
         definition: '@2d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.psd'
         root_name: 'primary'
 
+    2d_shot_publish_png_photoshop:
+        definition: '@shot_review_tex/maps/{Asset}[_{content}]_{Step}_{version}.png'
+        root_name: 'primary'
+
     # Photoshop Asset
 
     2d_asset_work_photoshop:
@@ -307,6 +319,10 @@ paths:
 
     2d_asset_review_photoshop:
         definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.jpeg'
+        root_name: 'primary'
+
+    2d_asset_publish_png_photoshop:
+        definition: '@asset_review_tex/maps/{Asset}[_{content}]_{Step}_{version}.png'
         root_name: 'primary'
 
     # -------------------------------------

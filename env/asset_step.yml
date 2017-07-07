@@ -185,7 +185,7 @@ engines:
         - caption: Assets
           entity_type: Asset
           filters:
-          - [project, is, '{context.project}']
+          - [sg_shelf_asset, is, '{context.entity}']
           hierarchy: [sg_asset_type, code]
         - caption: My Tasks
           entity_type: Task
@@ -198,9 +198,9 @@ engines:
           version: v1.17.3
           type: app_store
           name: tk-multi-loader2
-        menu_name: Load
+        menu_name: Import
         publish_filters: []
-        title_name: Loader
+        title_name: Import
       tk-multi-breakdown:
         hook_scene_operations: '{self}/tk-houdini_scene_operations.py'
         location:
@@ -245,7 +245,7 @@ engines:
       tk-multi-loader2:
         action_mappings:
           Maya Scene: [import]
-          Photoshop Image: [texture_node]
+          PNG Image: [texture_node]
           Rendered Image: [texture_node]
           Alembic Cache: [import]
           OBJ: [import]
@@ -255,7 +255,7 @@ engines:
         - caption: Assets
           entity_type: Asset
           filters:
-          - [project, is, '{context.project}']
+          - [sg_shelf_asset, is, '{context.entity}']
           hierarchy: [sg_asset_type, code]
         - caption: My Tasks
           entity_type: Task
@@ -268,9 +268,9 @@ engines:
           version: v1.17.3
           type: app_store
           name: tk-multi-loader2
-        menu_name: Load
+        menu_name: Import
         publish_filters: []
-        title_name: Loader
+        title_name: Import
       tk-multi-publish:
         allow_taskless_publishes: true
         display_name: Publish
@@ -369,9 +369,8 @@ engines:
         hook_scene_operation: default
         launch_at_startup: false
         location:
-          path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.1
-          type: git
+          path: U:\ajafargholi\APPS_SANDBOX\tk-multi-workfiles2
+          type: dev
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
         saveas_prefer_version_up: false
@@ -434,12 +433,7 @@ engines:
         - caption: Assets
           entity_type: Asset
           filters:
-          - [project, is, '{context.project}']
-          hierarchy: [sg_asset_type, code]
-        - caption: Assets
-          entity_type: Asset
-          filters:
-          - [project, is, '{context.project}']
+          - [sg_shelf_asset, is, '{context.entity}']
           hierarchy: [sg_asset_type, code]
         - caption: My Tasks
           entity_type: Task
@@ -452,9 +446,9 @@ engines:
           version: v1.17.3
           type: app_store
           name: tk-multi-loader2
-        menu_name: Load
+        menu_name: Import
         publish_filters: []
-        title_name: Loader
+        title_name: Import
       tk-multi-publish:
         allow_taskless_publishes: true
         display_name: Publish
@@ -662,12 +656,7 @@ engines:
         - caption: Assets
           entity_type: Asset
           filters:
-          - [project, is, '{context.project}']
-          hierarchy: [sg_asset_type, code]
-        - caption: Assets
-          entity_type: Asset
-          filters:
-          - [project, is, '{context.project}']
+          - [sg_shelf_asset, is, '{context.entity}']
           hierarchy: [sg_asset_type, code]
         - caption: My Tasks
           entity_type: Task
@@ -680,9 +669,9 @@ engines:
           version: v1.17.3
           type: app_store
           name: tk-multi-loader2
-        menu_name: Load
+        menu_name: Import
         publish_filters: []
-        title_name: Loader
+        title_name: Import
       tk-multi-publish:
         allow_taskless_publishes: true
         display_name: Publish
@@ -697,7 +686,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.1
+          version: v0.10.4.2
           type: git
         primary_description: Publish and version up the current Photoshop scene
         primary_display_name: Photoshop Publish
@@ -705,7 +694,19 @@ engines:
         primary_publish_template: 2d_asset_publish_photoshop
         primary_scene_item_type: work_file
         primary_tank_type: Photoshop Image
-        secondary_outputs: []
+        secondary_outputs:
+        - description: Publish Each Layer as a Separate PNG
+          allow_taskless_publishes: true
+          expand_single_items: true
+          display_group: PNG
+          display_name: PNG Publish
+          icon: icons/publish_photoshop_layer_png.png
+          name: png_publish
+          publish_template: 2d_asset_publish_png_photoshop
+          required: false
+          selected: true
+          tank_type: PNG Image
+          scene_item_type: png_images
         template_work: 2d_asset_work_photoshop
       tk-multi-screeningroom: '@launch_screeningroom'
       tk-multi-snapshot:
@@ -741,7 +742,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.1
+          version: v0.9.6.2
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -786,6 +787,7 @@ engines:
     - {app_instance: tk-multi-publish, name: Publish...}
     - {app_instance: tk-multi-pythonconsole, name: Shotgun Python Console...}
     debug_logging: false
+    automatic_context_switch: false
     location:
       version: v1.1.5
       type: app_store
