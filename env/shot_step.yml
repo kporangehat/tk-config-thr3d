@@ -50,6 +50,12 @@ engines:
         actions_hook: '{self}/tk-maya_actions.py'
         download_thumbnails: true
         entities:
+        - caption: Steps
+          entity_type: Asset
+          filters:
+          - [tasks, in, '{context.task}']
+          - [project, is, '{context.project}']
+          hierarchy: [sg_asset_type, code]
         - caption: Shot Assets
           entity_type: Asset
           filters:
