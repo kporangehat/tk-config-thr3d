@@ -9,34 +9,25 @@
 # not expressly granted therein are reserved by Shotgun Software Inc.
 #
 
-description: This environment controls what items should be shown on the menu in Shotgun
-  for shots. 
+description: Apps and Engines when launching with a project only context.
 
 #################################################################################################
-# include common definitions for all the launchers that are used to start maya, nuke etc.
+# include common files
 
 includes:
+# launchers for launching DCCs such as Maya, Nuke etc.
 - ./includes/app_launchers.yml
-- ./includes/paths.yml
+# common app configurations that are reused across environments
+- ./includes/common_apps.yml
 
 #################################################################################################
-# Define all the items that should appear in this environment
-#
-# Note! This environment is special and is only used by the Shotgun action
-# menu integration. It can only contain a Shotgun engine and the file name
-# reflects the entity type for which a menu will be generated in Shotgun.
-#
+# define all the items that should appear in this environment
+
+
 
 engines:
   tk-shotgun:
     apps:
-      tk-shotgun-folders:
-        deny_permissions: []
-        deny_platforms: []
-        location:
-          name: tk-shotgun-folders
-          type: app_store
-          version: v0.1.5
       tk-shotgun-launchfolder:
         deny_permissions: []
         deny_platforms: []
@@ -49,6 +40,7 @@ engines:
       version: v0.5.3
       type: app_store
       name: tk-shotgun
+
 #
 ###############################################################################
 #
@@ -59,3 +51,13 @@ engines:
 # Frameworks are automatically installed when apps are installed and udpated.
 #
 frameworks:
+  tk-framework-adminui_v0.x.x:
+    location:
+      version: v0.1.6
+      type: app_store
+      name: tk-framework-adminui
+  tk-framework-desktopserver_v1.x.x:
+    location:
+      version: v1.1.10
+      type: app_store
+      name: tk-framework-desktopserver
