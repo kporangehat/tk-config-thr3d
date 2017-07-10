@@ -74,9 +74,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.17.3
-          type: app_store
-          name: tk-multi-loader2
+          path: https://github.com/thr3dcgi/tk-multi-loader2.git
+          version: v1.17.3.1
+          type: git
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -238,9 +238,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.17.3
-          type: app_store
-          name: tk-multi-loader2
+          path: https://github.com/thr3dcgi/tk-multi-loader2.git
+          version: v1.17.3.1
+          type: git
         menu_name: Load
         publish_filters: []
         title_name: Loader
@@ -461,9 +461,9 @@ engines:
           hierarchy: [entity, content]
         filter_publishes_hook: '{self}/filter_publishes.py'
         location:
-          version: v1.17.3
-          type: app_store
-          name: tk-multi-loader2
+          path: https://github.com/thr3dcgi/tk-multi-loader2.git
+          version: v1.17.3.1
+          type: git
         menu_name: Load
         publish_filters: []
         title_name: Loader
