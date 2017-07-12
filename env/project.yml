@@ -47,12 +47,12 @@ engines:
     apps:
       tk-multi-shotgunpanel:
         location:
-          version: v1.4.2
+          version: v1.4.3
           type: app_store
           name: tk-multi-shotgunpanel
     hook_launch_python: default
     location:
-      version: v2.2.4
+      version: v2.3.0
       type: app_store
       name: tk-desktop
     show_recents: false

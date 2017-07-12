@@ -62,6 +62,8 @@ keys:
         type: int
     height:
         type: int
+    layer_name:
+        type: str
 
     # Represents the optional output name for frames written by the Shotgun Write Node
     nuke.output:
@@ -300,7 +302,7 @@ paths:
         root_name: 'primary'
 
     2d_shot_publish_png_photoshop:
-        definition: '@shot_review_tex/maps/{Asset}[_{content}]_{Step}_{version}.png'
+        definition: '@shot_review_tex/maps/v{version}/{layer_name}.png'
         root_name: 'primary'
 
     # Photoshop Asset
@@ -322,7 +324,7 @@ paths:
         root_name: 'primary'
 
     2d_asset_publish_png_photoshop:
-        definition: '@asset_review_tex/maps/{Asset}[_{content}]_{Step}_{version}.png'
+        definition: '@asset_review_tex/maps/v{version}/{layer_name}.png'
         root_name: 'primary'
 
     # -------------------------------------
