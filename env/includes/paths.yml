@@ -59,14 +59,14 @@ houdini_windows: 'C:\Program Files\Side Effects Software\Houdini 16.0.504.20\bin
 #
 # Photoshop CC
 #
-photoshop_mac: /Applications/Adobe Photoshop CC 2015.5/Adobe Photoshop CC 2015.5.app
-photoshop_win: 'C:\Program Files\Adobe\Adobe Photoshop CC 2015.5\Photoshop.exe'
+photoshop_mac: /Applications/Adobe Photoshop CC {version}/Adobe Photoshop CC {version}.app
+photoshop_win: 'C:\Program Files\Adobe\Adobe Photoshop CC {version}\Photoshop.exe'
 
 #
 # Illustrator CC
 #
-illustrator_win: 'C:\Program Files\Adobe\Adobe Illustrator CC 2015.3\Support Files\Contents\Windows\Illustrator.exe'
-illustrator_mac: /Applications/Adobe Illustrator CC 2015.3/Adobe Illustrator.app
+illustrator_win: 'C:\Program Files\Adobe\Adobe Illustrator CC {version}\Support Files\Contents\Windows\Illustrator.exe'
+illustrator_mac: /Applications/Adobe Illustrator CC {version}/Adobe Illustrator.app
 
 #
 # Tweak RV

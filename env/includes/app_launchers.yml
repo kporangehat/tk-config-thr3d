@@ -225,8 +225,8 @@ launch_photoshopcc:
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@photoshop_mac'
-  menu_name: Launch Photoshop-CC-2015.5
-  versions: []
+  menu_name: Launch Photoshop {version}
+  versions: ['2017',]
   windows_args: ''
   windows_path: '@photoshop_win'
 #
@@ -248,8 +248,8 @@ launch_illustratorcc:
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@illustrator_mac'
-  menu_name: Launch Illustrator-2015.3
-  versions: []
+  menu_name: Launch Illustrator {version}
+  versions: ['2017',]
   windows_args: ''
   windows_path: '@illustrator_win'
 #
