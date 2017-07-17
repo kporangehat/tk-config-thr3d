@@ -91,7 +91,16 @@ class BeforeAppLaunch(tank.Hook):
         if multi_launchapp.get_setting("engine") == "tk-houdini":
             logging.info("Running Before Launch Functions for Houdini")
             os.environ["HOUDINI_USE_OTL_AS_DEFAULT_HDA_EXT"] = "1"
-            os.environ["HOUDINI_OTLSCAN_PATH"] = r"\\isln-smb\thr3dcgi_config\Houdini\otl"
+            houdini_otl = os.path.join(Agnostic.THR3D_HOUDINI, "otl")
+            if "HOUDINI_OTLSCAN_PATH" in os.environ:
+                os.environ["HOUDINI_OTLSCAN_PATH"] += ";" + houdini_otl
+            else:
+                os.environ["HOUDINI_OTLSCAN_PATH"] = houdini_otl
 
         if multi_launchapp.get_setting("engine") == "tk-maya":
             logging.info("Running Before Launch Functions for Maya")
+            mel_script_path = os.path.join(Agnostic.THR3D_MAYA, "mel")
+            if "MAYA_SCRIPT_PATH" in os.environ:
+                os.environ["MAYA_SCRIPT_PATH"] += ";"+mel_script_path
+            else:
+                os.environ["MAYA_SCRIPT_PATH"] = mel_script_path
