@@ -17,6 +17,8 @@ import os
 import sys
 import logging
 
+import time
+
 THR3D_CGI_CONFIG = os.environ.get('THR3D_CGI_CONFIG',
                                       r'\\isln-smb\thr3dcgi_config')
 
@@ -35,7 +37,6 @@ except ImportError:
 
 from tank import Hook
 
-from config_utils import template_name
 from common import find_menu_item
 from tk_utils import tk_file_handler
 from maya_utils import load_utils as m_load_utils
@@ -52,9 +53,11 @@ class EngineInit(Hook):
         # Setting an global environment
         os.environ['DIVISION'] = "THR3D"
 
-        # After Maya load do the following tasks
-        if engine.name == "tk-maya":
-            # Get context information
+        #
+        latest_file = None
+
+        # Get context information
+        try:
             entity_name = engine.context.entity.get('name')
             task_name = engine.context.task.get('name')
             step = engine.context.step
@@ -62,8 +65,27 @@ class EngineInit(Hook):
             find_step = engine.sgtk.shotgun.find_one('Step',
                                                      filters=[['id', 'is',
                                                                step_id]],
-                                                     fields=['short_name'])
+                                                     fields=['short_name',
+                                                             'code'])
             step_short_name = find_step.get('short_name')
+            step_name = find_step.get('code')
+            if step_short_name:
+                latest_file = tk_file_handler.get_latest_scene(engine,
+                                                               entity_name,
+                                                               task_name,
+                                                               step_short_name)
+                logging.info("\n\nFound the latest scene: {}\n\n\n".format(latest_file))
+            else:
+                logging.info("Failed to find the latest work file since the "
+                             "can't access the Step. "
+                             "Step: {}".format(find_step))
+
+        except Exception as e:
+            engine.log_warning("Engine Init Failed to load: {}".format(str(e)))
+            return
+
+        # After Maya load do the following tasks
+        if engine.name == "tk-maya":
             try:
                 # 1- Load PyMel
                 import pymel.core as pm
@@ -76,6 +98,7 @@ class EngineInit(Hook):
                     pm.setAttr("defaultRenderGlobals.currentRenderer",
                                "vray",
                                type="string")
+                    logging.info("Setting V-ray as a renderer")
             except ImportError:
                 pm = None
                 logging.warning("Was not able to import PyMel.")
@@ -100,9 +123,17 @@ class EngineInit(Hook):
                 for menu_item in menu_items:
                     menu = menu_items.get(menu_item)
                     command_env = menu.get('env')
+
                     # We don't want to load the Dev environment tools
                     if command_env == "dev":
                         continue
+
+                    # We want to load the tools that are related to the
+                    # current context
+                    command_context = menu.get('context')
+                    if step_name.lower() not in command_context:
+                        continue
+
                     command_name = menu.get('command')
                     command_path = menu.get('path')
                     command_label = menu.get('label')
@@ -113,44 +144,43 @@ class EngineInit(Hook):
                                 label=command_label,
                                 parent="THR3D",
                                 command=command.execute)
+                    logging.info("Added {} command to the "
+                                 "THR3D menu".format(command_label))
+
+                # If there is no the THR3D menu has no item, delete it:
+                if not pm.menu("THR3D", q=True, itemArray=True):
+                    pm.deleteUI("THR3D")
+                    logging.debug("No THR3D menu item was found, so the menu "
+                                  "is deleted!")
 
             # 5- Load the latest working file if it's found
-            if step_short_name:
-                if task_name not in template_name.DEFAULT_TASK_NAME:
-                    step_short_name = task_name + "_" + step_short_name
+            if latest_file:
+                file_name = os.path.basename(latest_file)
+                engine.show_busy(
+                    "Loading the latest work file:",
+                    file_name
+                )
 
-                # Gathering all the work files
-                work_files = tk_file_handler.get_files("3d_shot_work_maya",
-                                                       engine.context.entity,
-                                                       engine.sgtk)
-                work_files += tk_file_handler.get_files("3d_asset_work_maya",
-                                                        engine.context.entity,
-                                                        engine.sgtk)
+                time.sleep(4)
+                engine.clear_busy()
 
-                # Filter out the scene that are not related to this task
-                context_files = []
-                for p in work_files:
-                    if entity_name in p and step_short_name in p:
-                        context_files.append(p)
-                # Get the latest version from all paths
-                if context_files:
-                    latest_file = sorted(context_files)[-1]
+                pm.openFile(latest_file, force=True)
 
-                    if os.path.exists(latest_file):
-                        file_name = os.path.basename(latest_file)
-                        pm.inViewMessage(
-                            amg='Loading the latest work file: '
-                                '<hl>{}</hl> '.format(file_name),
-                            pos='midCenter',
-                            fade=True)
-                        pm.openFile(latest_file, force=True)
-                    else:
-                        logging.info("The working file was not found on "
-                                     "disk: {}".format(latest_file))
-                else:
-                    logging.info("No working file was found "
-                                 "for this Task to load")
-            else:
-                logging.info("Failed to find the latest work file since the "
-                             "can't access the Step. "
-                             "Step: {}".format(find_step))
+        elif entity_name == "tk-nuke":
+            import nuke
+
+            # 1- Load the latest working file if it's found
+            if latest_file:
+                file_name = os.path.basename(latest_file)
+                for i in nuke.allNodes():
+                    nuke.delete(i)
+
+                nuke.nodePaste(latest_file)
+
+                engine.show_busy(
+                    "Loading the latest work file:",
+                    file_name
+                )
+
+                time.sleep(3)
+                engine.clear_busy()

@@ -72,7 +72,7 @@ illustrator_mac: /Applications/Adobe Illustrator CC {version}/Adobe Illustrator.
 # Tweak RV
 #
 rv_mac: /Applications/RV64.app
-rv_win: \\isln-smb\aw_config\Apps\RV\7.1.2\bin\rv.exe
+rv_win: '\\isln-smb\thr3dcgi_config\RV\latest\bin\rv.exe'
 rv_linux: rv
 
 #

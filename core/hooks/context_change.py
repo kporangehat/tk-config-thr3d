@@ -59,6 +59,30 @@ class ContextChangeHook(get_hook_baseclass()):
 
         # get a handle on the current engine
         engine = sgtk.platform.current_engine()
+        try:
+            app = engine.apps['tk-multi-workfiles2']
+            if not app.context_change_allowed:
+                # keep the same context.
+                sgtk.platform.change_context(previous_context)
+
+                # Inform the user that context is kept the same
+                app.log_info("Keeping the same context "
+                             "{}".format(previous_context))
+                engine.show_busy(
+                    "Since you're opening the master scene, "
+                    "we're keeping the same context!...",
+                    'Current Context: '
+                    '<font size="6" color="red">{}</font>'.format(
+                        previous_context)
+                )
+
+                time.sleep(4)
+                engine.clear_busy()
+                return
+
+        except Exception as e:
+            engine.log_info("Failed during the post context change "
+                            "process.\n{}".format(str(e)))
 
         # Inform the user that context has changed
         if previous_context and previous_context != current_context:

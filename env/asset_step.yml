@@ -116,7 +116,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.2
+          version: v0.9.6.3
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -376,7 +376,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.2
+          version: v0.9.6.3
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -405,6 +405,7 @@ engines:
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Open Master Scene...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
@@ -577,7 +578,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.2
+          version: v0.9.6.3
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
@@ -639,6 +640,7 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
+    - {app_instance: tk-multi-workfiles2, name: File Open Master Scene...}
     - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
@@ -761,7 +763,7 @@ engines:
         launch_at_startup: false
         location:
           path: https://github.com/thr3dcgi/tk-multi-workfiles2.git
-          version: v0.9.6.2
+          version: v0.9.6.3
           type: git
         my_tasks_extra_display_fields: []
         saveas_default_name: scene
