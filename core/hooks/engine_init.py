@@ -55,20 +55,21 @@ class EngineInit(Hook):
 
         #
         latest_file = None
+        step_short_name = None
 
         # Get context information
         try:
-            entity_name = engine.context.entity.get('name')
-            task_name = engine.context.task.get('name')
+            entity_name = engine.context.entity.get('name', None)
+            task_name = engine.context.task.get('name', None)
             step = engine.context.step
-            step_id = step.get('id')
+            step_id = step.get('id', None)
             find_step = engine.sgtk.shotgun.find_one('Step',
                                                      filters=[['id', 'is',
                                                                step_id]],
                                                      fields=['short_name',
                                                              'code'])
-            step_short_name = find_step.get('short_name')
-            step_name = find_step.get('code')
+            step_short_name = find_step.get('short_name', None)
+            step_name = find_step.get('code', None)
             if step_short_name:
                 latest_file = tk_file_handler.get_latest_scene(engine,
                                                                entity_name,
@@ -82,10 +83,10 @@ class EngineInit(Hook):
 
         except Exception as e:
             engine.log_warning("Engine Init Failed to load: {}".format(str(e)))
-            return
+            pass
 
         # After Maya load do the following tasks
-        if engine.name == "tk-maya":
+        if engine.name == "tk-maya" and step_short_name:
             try:
                 # 1- Load PyMel
                 import pymel.core as pm
@@ -166,10 +167,11 @@ class EngineInit(Hook):
 
                 pm.openFile(latest_file, force=True)
 
-        elif entity_name == "tk-nuke":
+        elif engine.name == "tk-nuke" and step_short_name:
             import nuke
 
             # 1- Load the latest working file if it's found
+            engine.log_warning("THis is the latest file:"+latest_file)
             if latest_file:
                 file_name = os.path.basename(latest_file)
                 for i in nuke.allNodes():
