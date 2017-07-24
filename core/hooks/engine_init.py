@@ -82,7 +82,7 @@ class EngineInit(Hook):
                              "Step: {}".format(find_step))
 
         except Exception as e:
-            engine.log_warning("Engine Init Failed to load: {}".format(str(e)))
+            engine.log_debug("Engine Init Failed to load: {}".format(str(e)))
             pass
 
         # After Maya load do the following tasks
