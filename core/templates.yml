@@ -290,11 +290,11 @@ paths:
     # Photoshop Shot
 
     2d_shot_work_photoshop:
-        definition: '@2d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{ps_extension}'
+        definition: '@2d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{ps_extension}'
         root_name: 'primary'
 
     2d_shot_publish_photoshop:
-        definition: '@2d_shot_publish/{Shot}_{Step}_{version}.psd'
+        definition: '@2d_shot_publish/{Shot}[_{content}]_{Step}_{version}.psd'
         root_name: 'primary'
 
     2d_shot_snapshot_photoshop:
@@ -316,7 +316,7 @@ paths:
         root_name: 'primary'
 
     2d_asset_snapshot_photoshop:
-        definition: '@2d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.psd'
+        definition: '@2d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.psd'
         root_name: 'primary'
 
     2d_asset_review_photoshop:
@@ -331,11 +331,11 @@ paths:
     # Maya Shot
 
     3d_shot_work_maya:
-        definition: '@3d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{maya_extension}'
+        definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{maya_extension}'
         root_name: 'primary'
 
     3d_shot_publish_maya:
-        definition: '@3d_shot_publish/{Shot}_{Step}_{version}.{maya_extension}'
+        definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{maya_extension}'
         root_name: 'primary'
 
     3d_shot_snapshot_maya:
@@ -376,11 +376,11 @@ paths:
     # 3ds Max Shot
 
     3d_shot_work_max:
-        definition: '@3d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{max_extension}'
+        definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{max_extension}'
         root_name: 'primary'
 
     3d_shot_publish_max:
-        definition: '@3d_shot_publish/{Shot}_{Step}_{version}.{max_extension}'
+        definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{max_extension}'
         root_name: 'primary'
 
     3d_shot_snapshot_max:
@@ -405,11 +405,11 @@ paths:
     # Houdini Shot
 
     3d_shot_work_houdini:
-        definition: '@3d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]{houdini_extension}'
+        definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{houdini_extension}'
         root_name: 'primary'
 
     3d_shot_publish_houdini:
-        definition: '@3d_shot_publish/{Shot}_{Step}_{version}.{houdini_extension}'
+        definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{houdini_extension}'
         root_name: 'primary'
 
     3d_shot_snapshot_houdini:
@@ -458,11 +458,11 @@ paths:
     # Nuke Shot
 
     2d_shot_work_nuke:
-        definition: '@2d_shot_work/{Shot}_{Step}_{version}.[{iteration}.]nk'
+        definition: '@2d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]nk'
         root_name: 'primary'
 
     2d_shot_publish_nuke:
-        definition: '@2d_shot_publish/{Shot}_{Step}_{version}.nk'
+        definition: '@2d_shot_publish/{Shot}[_{content}]_{Step}_{version}.nk'
         root_name: 'primary'
 
     2d_shot_snapshot_nuke:
@@ -559,7 +559,7 @@ paths:
     # Render Images Shot
 
     render_img_work:
-        definition: '@shot_review_ren/{Shot}_{Step}_{SEQ}.{version}.exr'
+        definition: '@shot_review_ren/{Shot}[_{content}]_{Step}_{SEQ}.{version}.exr'
         root_name: 'primary'
 
     # Render Images Asset

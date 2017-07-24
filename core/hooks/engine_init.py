@@ -50,17 +50,15 @@ class EngineInit(Hook):
         At this point, all applications and frameworks have been loaded,
         and the engine is fully operational.
         """
-        # Setting an global environment
+        # Setting an global environment, this is being used during the
+        # rendering of farm in Deadline
         os.environ['DIVISION'] = "THR3D"
 
-        #
-        latest_file = None
-        step_short_name = None
+        # Required variable
+        step_name = None
 
         # Get context information
         try:
-            entity_name = engine.context.entity.get('name', None)
-            task_name = engine.context.task.get('name', None)
             step = engine.context.step
             step_id = step.get('id', None)
             find_step = engine.sgtk.shotgun.find_one('Step',
@@ -68,25 +66,14 @@ class EngineInit(Hook):
                                                                step_id]],
                                                      fields=['short_name',
                                                              'code'])
-            step_short_name = find_step.get('short_name', None)
             step_name = find_step.get('code', None)
-            if step_short_name:
-                latest_file = tk_file_handler.get_latest_scene(engine,
-                                                               entity_name,
-                                                               task_name,
-                                                               step_short_name)
-                logging.info("\n\nFound the latest scene: {}\n\n\n".format(latest_file))
-            else:
-                logging.info("Failed to find the latest work file since the "
-                             "can't access the Step. "
-                             "Step: {}".format(find_step))
 
         except Exception as e:
             engine.log_debug("Engine Init Failed to load: {}".format(str(e)))
             pass
 
         # After Maya load do the following tasks
-        if engine.name == "tk-maya" and step_short_name:
+        if engine.name == "tk-maya":
             try:
                 # 1- Load PyMel
                 import pymel.core as pm
@@ -154,7 +141,11 @@ class EngineInit(Hook):
                     logging.debug("No THR3D menu item was found, so the menu "
                                   "is deleted!")
 
-            # 5- Load the latest working file if it's found
+            # 5- # Find and open the latest work file
+            templates = ["3d_shot_work_maya", "3d_asset_work_maya"]
+            latest_file = tk_file_handler.get_latest_scene_file(engine,
+                                                                templates)
+
             if latest_file:
                 file_name = os.path.basename(latest_file)
                 engine.show_busy(
@@ -167,11 +158,13 @@ class EngineInit(Hook):
 
                 pm.openFile(latest_file, force=True)
 
-        elif engine.name == "tk-nuke" and step_short_name:
+        elif engine.name == "tk-nuke":
             import nuke
 
-            # 1- Load the latest working file if it's found
-            engine.log_warning("THis is the latest file:"+latest_file)
+            # Find and open the latest work file
+            templates = ["2d_shot_work_nuke", "2d_asset_work_nuke"]
+            latest_file = tk_file_handler.get_latest_scene_file(engine,
+                                                                templates)
             if latest_file:
                 file_name = os.path.basename(latest_file)
                 for i in nuke.allNodes():
@@ -186,3 +179,16 @@ class EngineInit(Hook):
 
                 time.sleep(3)
                 engine.clear_busy()
+
+        elif engine.name == "tk-photoshopcc" or engine.name == "tk-photoshop":
+
+            # Find and open the latest work file
+            templates = ["2d_shot_work_photoshop", "2d_asset_work_photoshop"]
+            latest_file = tk_file_handler.get_latest_scene_file(engine,
+                                                                templates)
+
+            engine.log_info("Opening this: {}".format(latest_file))
+            if latest_file:
+                adobe = engine.adobe
+                scene_file = adobe.File(latest_file)
+                adobe.app.load(scene_file)
