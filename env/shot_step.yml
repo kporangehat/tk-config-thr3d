@@ -180,6 +180,11 @@ engines:
           version: v1.1.0
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-open-master:
+        location:
+          path: https://github.com/thr3dcgi/tk-multi-open-master.git
+          version: v0.0.1
+          type: git
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
@@ -413,6 +418,11 @@ engines:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
           version: v0.1.0
           type: git
+      tk-multi-open-master:
+        location:
+          path: https://github.com/thr3dcgi/tk-multi-open-master.git
+          version: v0.0.1
+          type: git
     compatibility_dialog_min_version: 10
     debug_logging: false
     favourite_directories: []
@@ -605,6 +615,10 @@ engines:
       tk-multi-launchnuke: '@launch_nuke'
       tk-multi-launchphotoshopcc: '@launch_photoshopcc'
       tk-multi-punchout: '@launch_punch_out'
+      tk-multi-open-master:
+        location:
+          path: U:\ajafargholi\APPS_SANDBOX\tk-multi-open-master
+          type: dev
     location:
       version: v0.5.2
       type: app_store

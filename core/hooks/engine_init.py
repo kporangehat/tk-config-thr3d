@@ -160,25 +160,16 @@ class EngineInit(Hook):
 
         elif engine.name == "tk-nuke":
             import nuke
-
             # Find and open the latest work file
             templates = ["2d_shot_work_nuke", "2d_asset_work_nuke"]
             latest_file = tk_file_handler.get_latest_scene_file(engine,
                                                                 templates)
             if latest_file:
-                file_name = os.path.basename(latest_file)
-                for i in nuke.allNodes():
-                    nuke.delete(i)
+                nuke.Root().setModified(False)
+                nuke.scriptOpen(latest_file)
+                nuke.Root().setModified(True)
 
-                nuke.nodePaste(latest_file)
-
-                engine.show_busy(
-                    "Loading the latest work file:",
-                    file_name
-                )
-
-                time.sleep(3)
-                engine.clear_busy()
+            engine.log_info("loading {} ".format(latest_file))
 
         elif engine.name == "tk-photoshopcc" or engine.name == "tk-photoshop":
 
