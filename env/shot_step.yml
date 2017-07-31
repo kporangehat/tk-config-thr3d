@@ -78,9 +78,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publish and version up the current 3ds Max scene
         primary_display_name: 3ds Max Publish
         primary_icon: icons/publish_3dsmax_main.png
@@ -199,9 +199,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publish and version up the current scene
         primary_display_name: Scene File Publish
         primary_icon: icons/publish_houdini_main.png
@@ -420,9 +420,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publish and version up the current Maya scene
         primary_display_name: Maya Publish
         primary_icon: icons/publish_maya_main.png
@@ -430,27 +430,37 @@ engines:
         primary_scene_item_type: work_file
         primary_tank_type: Maya Scene
         secondary_outputs:
-          - description: 'Publish Alembic'
-            display_group: Caches
-            display_name: Alembic Cache
-            icon: 'icons/alembic_cache_publish.png'
-            name: alembic_cache
-            publish_template: shot_alembic_cache
-            required: false
-            scene_item_type: mesh_group
-            selected: false
-            tank_type: 'Alembic Cache'
-          - description: 'Publish OBJ'
-            display_group: Obj
-            display_name: OBJ
-            icon: 'icons/obj_publish.png'
-            name: obj_export
-            publish_template: shot_obj_cache
-            required: false
-            scene_item_type: mesh_group
-            selected: false
-            tank_type: 'OBJ'
-
+        - description: Publish Alembic
+          display_group: Caches
+          display_name: Alembic Cache
+          icon: icons/alembic_cache_publish.png
+          name: alembic_cache
+          publish_template: shot_alembic_cache
+          required: false
+          scene_item_type: mesh_group
+          selected: false
+          tank_type: Alembic Cache
+        - description: Publish OBJ
+          display_group: Obj
+          display_name: OBJ
+          icon: icons/obj_publish.png
+          name: obj_export
+          publish_template: shot_obj_cache
+          required: false
+          scene_item_type: mesh_group
+          selected: false
+          tank_type: OBJ
+        - description: This will submit a job Deadline then publish your renders when
+            complete.
+          display_name: Submit to Deadline
+          display_group: Deadline
+          icon: icons/publish_nuke_review.png
+          name: deadline_submit
+          publish_template:
+          required: false
+          scene_item_type: mesh_group
+          selected: true
+          tank_type: Deadline
         template_work: 3d_shot_work_maya
       tk-multi-setframerange:
         location:
@@ -528,6 +538,18 @@ engines:
           version: v1.0.9
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-deadline:
+        location:
+          path: https://github.com/thr3dcgi/tk-multi-deadline.git
+          type: git
+          version: v0.1.1
+        display_name: default
+        template_project_file: 3d_shot_work_maya
+        render_location: shot_version
+        version_template: Shot_Step_vversion    # These strings are replaced, 'vverison' is v001
+        batch_name: '{Shot} | v{version}'
+        sg_in_frame_field: sg_cut_in
+        sg_out_frame_field: sg_cut_out
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
@@ -536,7 +558,7 @@ engines:
       name: tk-maya
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     template_project: shot_root
@@ -605,9 +627,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publishes and versions up the current Nuke script.
         primary_display_name: Nuke Publish
         primary_icon: icons/publish_nuke_main.png
@@ -635,6 +657,18 @@ engines:
           scene_item_type: write_node
           selected: true
           tank_type: Quicktime
+        - description: This will submit a job Deadline then publish your renders when
+            complete.
+          display_name: Submit to Deadline
+          display_group: Deadline
+          icon: icons/publish_nuke_review.png
+          name: deadline_submit
+          publish_template:
+          required: false
+          scene_item_type: write_node
+          selected: true
+          tank_type: Deadline
+
         template_work: 2d_shot_work_nuke
       tk-multi-reviewsubmission:
         location:
@@ -718,19 +752,6 @@ engines:
         template_work: 2d_shot_work_nuke
         template_work_area: 2d_shot_work
         version_compare_ignore_fields: []
-      # tk-nuke-quickdailies:
-      #   current_scene_template: nuke_shot_work
-      #   height: 768
-      #   location:
-      #     version: v0.3.4
-      #     type: app_store
-      #     name: tk-nuke-quickdailies
-      #   movie_template: shot_quicktime_quick
-      #   post_hooks: [snapshot_history_post_quickdaily]
-      #   sg_version_name_template: nuke_quick_shot_version_name
-      #   width: 1024
-      #   upload_movie: false
-      #   codec_settings_hook: '{self}/codec_settings.py'
       tk-nuke-writenode:
         location:
           version: v1.2.0
@@ -777,7 +798,7 @@ engines:
       name: tk-nuke
     menu_favourites:
     - {app_instance: tk-multi-workfiles2, name: File Open...}
-    - {app_instance: tk-multi-workfiles2, name: File Save...}
+    - {app_instance: tk-multi-workfiles2, name: File Save Iteration...}
     - {app_instance: tk-multi-snapshot, name: Snapshot...}
     - {app_instance: tk-multi-publish, name: Publish...}
     bin_context_menu: []
@@ -806,9 +827,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publish and version up the selected Hiero project
         primary_display_name: Hiero Publish
         primary_icon: icons/publish_hiero_main.png
@@ -1060,9 +1081,9 @@ engines:
         hook_secondary_publish: default
         hook_thumbnail: default
         location:
-          version: v0.10.4
-          type: app_store
-          name: tk-multi-publish
+          path: https://github.com/thr3dcgi/tk-multi-publish.git
+          version: v0.10.4.6
+          type: git
         primary_description: Publish and version up the current Photoshop scene
         primary_display_name: Photoshop Publish
         primary_icon: icons/publish_photoshop_main.png
