@@ -94,7 +94,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.7
+          version: v0.10.4.8
           type: git
         primary_description: Publish and version up the current Maya scene
         primary_display_name: Maya Publish
@@ -102,7 +102,6 @@ engines:
         primary_publish_template: 3d_shot_publish_maya
         primary_scene_item_type: work_file
         primary_tank_type: Maya Scene
-        secondary_outputs: []
         secondary_outputs:
         - description: This will submit a job Deadline then publish your renders when
             complete.
@@ -283,7 +282,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.7
+          version: v0.10.4.8
           type: git
         primary_description: Publishes and versions up the current Nuke script.
         primary_display_name: Nuke Publish
@@ -507,7 +506,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.7
+          version: v0.10.4.8
           type: git
         primary_description: Publish and version up the current Photoshop scene
         primary_display_name: Photoshop Publish
