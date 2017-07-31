@@ -103,6 +103,18 @@ engines:
         primary_scene_item_type: work_file
         primary_tank_type: Maya Scene
         secondary_outputs: []
+        secondary_outputs:
+        - description: This will submit a job Deadline then publish your renders when
+            complete.
+          display_name: Submit to Deadline
+          display_group: Deadline
+          icon: icons/publish_nuke_review.png
+          name: deadline_submit
+          publish_template:
+          required: false
+          scene_item_type: mesh_group
+          selected: true
+          tank_type: Deadline
         template_work: 3d_shot_work_maya
       tk-multi-setframerange:
         location:
@@ -180,6 +192,18 @@ engines:
           version: v1.1.0
           type: app_store
           name: tk-multi-pythonconsole
+      tk-multi-deadline:
+        location:
+          path: https://github.com/thr3dcgi/tk-multi-deadline.git
+          type: git
+          version: v0.1.1
+        display_name: default
+        template_project_file: 3d_shot_work_maya
+        render_location: shot_version
+        version_template: Shot_Step_vversion    # These strings are replaced, 'vverison' is v001
+        batch_name: '{Shot} | v{version}'
+        sg_in_frame_field: sg_cut_in
+        sg_out_frame_field: sg_cut_out
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:

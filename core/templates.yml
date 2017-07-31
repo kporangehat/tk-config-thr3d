@@ -119,6 +119,17 @@ keys:
         shotgun_entity_type: Task
         shotgun_field_name: content
 
+    # Image extensions.
+    img_extension:
+        type: str
+        choices:
+            png: PNG Image (.png)
+            jpeg: JPEG Image (.jpeg)
+            tiff: TIFF Image (.tiff)
+            exr: EXR Image (.exr)
+        default: exr
+        alias: img
+
     # Maya supports two extension types.
     maya_extension:
         type: str
@@ -156,7 +167,7 @@ keys:
 
     # THR3D added
     # Extension for files duh.
-    ext: 
+    ext:
         type: str
 
     subversion:
@@ -237,6 +248,10 @@ paths:
         definition: '@shot_root/img/ren'
         root_name: 'primary'
 
+    shot_version:
+        definition: '@shot_root/img/ren/v{version}'
+        root_name: 'primary'
+
     shot_review_tex:
         definition: '@shot_root/img/tex'
         root_name: 'primary'
@@ -277,6 +292,10 @@ paths:
 
     asset_review_ren:
         definition: '@asset_root/img/ren'
+        root_name: 'primary'
+
+    asset_version:
+        definition: '@asset_review_ren/v{version}'
         root_name: 'primary'
 
     asset_review_tex:
@@ -562,10 +581,35 @@ paths:
         definition: '@shot_review_ren/{Shot}[_{content}]_{Step}_{SEQ}.{version}.exr'
         root_name: 'primary'
 
+    render_shot_version:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.{img_extension}'
+        root_name: 'primary'
+
+    render_shot_version_png:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.png'
+        root_name: 'primary'
+    render_shot_version_exr:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.exr'
+        root_name: 'primary'
+    render_shot_version_jpeg:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.jpg'
+        root_name: 'primary'
+    render_shot_version_tiff:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.tiff'
+        root_name: 'primary'
+    render_shot_version_mov:
+        definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.mov'
+        root_name: 'primary'
+
+
     # Render Images Asset
 
     asset_render_img_work:
         definition: '@asset_review_ren/{Asset}[_{content}]_{Step}_{SEQ}.{version}.exr'
+        root_name: 'primary'
+
+    render_asset_version:
+        definition: '@asset_version/{Asset}_{Step}_{version}.{SEQ}.{img_extension}'
         root_name: 'primary'
 
     # ##########################################################################################
