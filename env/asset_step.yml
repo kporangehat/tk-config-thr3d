@@ -44,7 +44,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.5
+          version: v0.10.4.7
           type: git
         primary_description: Publish and version up the current scene
         primary_display_name: Scene File Publish
@@ -291,7 +291,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.5
+          version: v0.10.4.7
           type: git
         primary_description: Publish and version up the current Maya scene
         primary_display_name: Maya Publish
@@ -397,11 +397,6 @@ engines:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
           version: v0.1.0
           type: git
-      tk-multi-open-master:
-        location:
-          path: https://github.com/thr3dcgi/tk-multi-open-master.git
-          version: v0.0.1
-          type: git
     compatibility_dialog_min_version: 2015
     debug_logging: false
     location:
@@ -482,7 +477,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.5
+          version: v0.10.4.7
           type: git
         primary_description: Publishes and versions up the current Nuke script.
         primary_display_name: Nuke Publish
@@ -636,11 +631,6 @@ engines:
           path: https://github.com/thr3dcgi/tk-multi-timelog.git
           version: v0.1.0
           type: git
-      tk-multi-open-master:
-        location:
-          path: https://github.com/thr3dcgi/tk-multi-open-master.git
-          version: v0.0.1
-          type: git
     compatibility_dialog_min_version: 10
     debug_logging: false
     favourite_directories: []
@@ -717,7 +707,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.5
+          version: v0.10.4.7
           type: git
         primary_description: Publish and version up the current Photoshop scene
         primary_display_name: Photoshop Publish

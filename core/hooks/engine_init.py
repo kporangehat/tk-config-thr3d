@@ -164,10 +164,6 @@ class EngineInit(Hook):
             templates = ["2d_shot_work_nuke", "2d_asset_work_nuke"]
             latest_file = tk_file_handler.get_latest_scene_file(engine,
                                                                 templates)
-            if latest_file:
-                nuke.Root().setModified(False)
-                nuke.scriptOpen(latest_file)
-                nuke.Root().setModified(True)
 
             engine.log_info("loading {} ".format(latest_file))
 

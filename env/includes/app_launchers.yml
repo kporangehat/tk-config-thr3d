@@ -134,7 +134,7 @@ launch_maya:
   mac_args: ''
   mac_path: ''
   menu_name: Launch Maya {version}
-  versions: ['2015', '2017']
+  versions: ['2015']
   windows_args: ''
   windows_path: '@maya_windows'
 #
@@ -180,7 +180,7 @@ launch_nuke:
   mac_args: ''
   mac_path: '@nuke_mac'
   menu_name: Launch Nuke {version}
-  versions: [(10.5)v4, (9.0)v7]
+  versions: [(9.0)v7,]
   windows_args: ''
   windows_path: '@nuke_windows'
 #
