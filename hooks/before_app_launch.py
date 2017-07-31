@@ -20,6 +20,25 @@ import sys
 import logging
 import tank
 
+# TODO: IT needs to add this
+THR3D_CGI_CONFIG = os.environ.get('THR3D_CGI_CONFIG',
+                                  r'\\isln-smb\thr3dcgi_config')
+
+if not os.path.exists(THR3D_CGI_CONFIG):
+    logging.error("Can't access to config path: {}".format(THR3D_CGI_CONFIG))
+    raise ValueError
+
+if THR3D_CGI_CONFIG not in sys.path:
+    sys.path.append(THR3D_CGI_CONFIG)
+
+try:
+    import Agnostic
+except ImportError:
+    logging.error("THR3D was not able to load the Agnostic")
+    raise ImportError
+
+from shotgun_utils import time_log_utils, main_utils
+
 
 class BeforeAppLaunch(tank.Hook):
     """
@@ -39,24 +58,49 @@ class BeforeAppLaunch(tank.Hook):
 
         """
 
+        logging.info("Setting Up for THR3D Pipeline")
+
         # accessing the current context (current shot, etc)
         # can be done via the parent object
         multi_launchapp = self.parent
-        current_entity = multi_launchapp.context.entity
 
-        logging.info("Setting Global Variable for THR3d")
+        project_entity = multi_launchapp.context.project
+        user_entity = multi_launchapp.context.user
+        task_entity = multi_launchapp.context.task
+
+        if task_entity:
+            # Start time logging
+            time_log_utils.start_timelog_clock(project=project_entity,
+                                               task=task_entity,
+                                               user=user_entity)
+
+            # Change the task's status
+            result = main_utils.set_status(task_entity, 'ip')
+            if result:
+                logging.info("Updated the status of entity: {} - id: {} to "
+                             "{}".format(result.get('name'),
+                                         result.get('id'),
+                                         result.get('sg_status_list')))
+            else:
+                logging.info("Failed to update the status.")
 
         # Engine specific functions
-        multi_launchapp = self.parent
+        if multi_launchapp.get_setting("engine") == "tk-nuke":
+            logging.info("Running Before Launch Functions for Nuke")
+
         if multi_launchapp.get_setting("engine") == "tk-houdini":
-            logging.info("Running Houdini")
-            logging.info("Running Houdini")
-            os.environ["HOUDINI_USE_OTL_AS_DEFAULT_HDA_EXT"] = 1
-            os.environ["HOUDINI_OTLSCAN_PATH"] = r"\\isln-smb\thr3dcgi_config\Houdini\otl"
+            logging.info("Running Before Launch Functions for Houdini")
+            os.environ["HOUDINI_USE_OTL_AS_DEFAULT_HDA_EXT"] = "1"
+            houdini_otl = os.path.join(Agnostic.THR3D_HOUDINI, "otl")
+            if "HOUDINI_OTLSCAN_PATH" in os.environ:
+                os.environ["HOUDINI_OTLSCAN_PATH"] += ";" + houdini_otl
+            else:
+                os.environ["HOUDINI_OTLSCAN_PATH"] = houdini_otl
 
         if multi_launchapp.get_setting("engine") == "tk-maya":
-            logging.info("Running Maya", version)
-            logging.info("app_path == > ", app_path)
-            logging.info("app_args == > ", app_args)
-            logging.info("kwargs == > ", kwargs)
-            logging.info("current_entity == > ", current_entity)
+            logging.info("Running Before Launch Functions for Maya")
+            mel_script_path = os.path.join(Agnostic.THR3D_MAYA, "mel")
+            if "MAYA_SCRIPT_PATH" in os.environ:
+                os.environ["MAYA_SCRIPT_PATH"] += ";"+mel_script_path
+            else:
+                os.environ["MAYA_SCRIPT_PATH"] = mel_script_path

@@ -31,6 +31,14 @@ engines:
   tk-shotgun:
     apps:
       tk-multi-launchnukestudio: '@launch_nukestudio'
+    apps:
+      tk-shotgun-folders:
+        deny_permissions: []
+        deny_platforms: []
+        location:
+          name: tk-shotgun-folders
+          type: app_store
+          version: v0.1.5
       tk-shotgun-launchfolder:
         deny_permissions: []
         deny_platforms: []
@@ -40,7 +48,7 @@ engines:
           version: v0.1.5
     debug_logging: false
     location:
-      version: v0.5.2
+      version: v0.5.3
       type: app_store
       name: tk-shotgun
 #
@@ -52,4 +60,4 @@ engines:
 # common functionality for building UIs and communicating with Shotgun.
 # Frameworks are automatically installed when apps are installed and udpated.
 #
-frameworks: null
+frameworks:

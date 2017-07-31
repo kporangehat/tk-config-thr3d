@@ -30,12 +30,12 @@ launch_creaform:
   engine: ''
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
-  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\creaform_icon.png'
+  hook_before_app_launch: before_app_launch
+  icon: '{config_path}/icons/creaform_icon.png'
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -44,7 +44,6 @@ launch_creaform:
   versions: []
   windows_args: ''
   windows_path: '@creaform_windows'
-
 #
 # -------------------------------------------------
 # 3dsmax
@@ -54,17 +53,17 @@ launch_3dsmax:
   engine: tk-3dsmaxplus
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch 3dsmax {version}'
+  menu_name: Launch 3dsmax {version}
   versions: ['2012', '2016', '2017']
   windows_args: ''
   windows_path: '@3dsmax_windows'
@@ -77,12 +76,12 @@ launch_houdini:
   engine: tk-houdini
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -100,12 +99,12 @@ launch_mari:
   engine: tk-mari
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@mari_linux'
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
@@ -124,19 +123,43 @@ launch_maya:
   extra: {}
   hook_app_launch: default
   hook_before_app_launch: before_app_launch
+  hook_after_app_launch: after_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@maya_linux'
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch Maya {version}'
+  menu_name: Launch Maya {version}
   versions: ['2015', '2017']
   windows_args: ''
   windows_path: '@maya_windows'
+#
+# -------------------------------------------------
+# Punch Out
+# -------------------------------------------------
+launch_punch_out:
+  defer_keyword: ''
+  engine: ''
+  extra: {}
+  hook_app_launch: default
+  hook_before_app_launch: punch_out_app
+  icon: ''
+  linux_args: ''
+  linux_path: ''
+  location:
+    version: v0.9.4
+    type: app_store
+    name: tk-multi-launchapp
+  mac_args: ''
+  mac_path: ''
+  menu_name: Punch Out
+  versions: []
+  windows_args: ''
+  windows_path: '@punch_out'
 #
 # -------------------------------------------------
 # Nuke
@@ -146,18 +169,18 @@ launch_nuke:
   engine: tk-nuke
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: '@nuke_linux'
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@nuke_mac'
-  menu_name: 'Launch Nuke {version}'
-  versions: ['(10.5)v4', '(9.0)v7']
+  menu_name: Launch Nuke {version}
+  versions: [(10.5)v4, (9.0)v7]
   windows_args: ''
   windows_path: '@nuke_windows'
 #
@@ -169,18 +192,18 @@ launch_nukestudio:
   engine: tk-nukestudio
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_nukestudio_256.png'
   linux_args: --studio
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: ''
-  menu_name: 'Launch NukeStudio {version}'
-  versions: ['(10.5)v4', '(9.0)v7']
+  menu_name: Launch NukeStudio {version}
+  versions: [(10.5)v4, (9.0)v7]
   windows_args: --studio
   windows_path: '@nukestudio_windows'
 #
@@ -192,18 +215,18 @@ launch_photoshopcc:
   engine: tk-photoshopcc
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
+  hook_before_app_launch: before_app_launch
   icon: '{target_engine}/icon_256.png'
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@photoshop_mac'
-  menu_name: Launch Photoshop-CC-2015.5
-  versions: []
+  menu_name: Launch Photoshop {version}
+  versions: ['2017', '2015.5']
   windows_args: ''
   windows_path: '@photoshop_win'
 #
@@ -215,18 +238,18 @@ launch_illustratorcc:
   engine: ''
   extra: {}
   hook_app_launch: default
-  hook_before_app_launch: default
-  icon: '\\isln-smb\thr3dcgi_config\Shotgun\studio\install\icons\illustrator_icon.png'
+  hook_before_app_launch: before_app_launch
+  icon: '{config_path}/icons/illustrator_icon.png'
   linux_args: ''
   linux_path: ''
   location:
-    version: v0.8.2
+    version: v0.9.4
     type: app_store
     name: tk-multi-launchapp
   mac_args: ''
   mac_path: '@illustrator_mac'
-  menu_name: Launch Illustrator-2015.3
-  versions: []
+  menu_name: Launch Illustrator {version}
+  versions: ['2017', '2015.3']
   windows_args: ''
   windows_path: '@illustrator_win'
 #
@@ -244,3 +267,32 @@ launch_screeningroom:
   rv_path_mac: '@rv_mac'
   rv_path_windows: '@rv_win'
   init_hook: '{config}/sr_launch_hook.py'
+#
+# RV
+# -------------------------------------------------
+launch_rv:
+  defer_keyword: ''
+  engine: ''
+  extra: {}
+  hook_app_launch: default
+  hook_before_app_launch: before_app_launch
+  icon: '{config_path}/icons/rv_icon.png'
+  linux_args: ''
+  linux_path: ''
+  location:
+    version: v0.9.4
+    type: app_store
+    name: tk-multi-launchapp
+  mac_args: ''
+  mac_path: ''
+  menu_name: Launch RV
+  versions: []
+  windows_args: ''
+  windows_path: '@rv_win'
+
+frameworks:
+  tk-framework-shotgunutils_v5.x.x:
+    location:
+      version: v5.2.1
+      type: app_store
+      name: tk-framework-shotgunutils

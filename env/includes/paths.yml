@@ -21,7 +21,6 @@ mari_mac: /Applications/Mari3.0v2
 mari_windows: 'C:\Program Files\Mari3.1v3\Bundle\bin\Mari3.1v3.exe'
 
 #
-#
 # Creaform
 #
 creaform_linux: ''
@@ -38,7 +37,7 @@ maya_linux: maya
 
 #
 # Nuke
-# 9.0v7 & 10.0v5
+#
 nuke_mac: /Applications/Nuke{version}/Nuke{version}.app
 nuke_windows: 'C:\Program Files\Nuke{version}\Nuke{v0}.exe'
 nuke_linux: Nuke9.0
@@ -46,46 +45,39 @@ nuke_linux: Nuke9.0
 #
 # Nuke Studio
 #
-#nukestudio_mac: /Applications/Nuke9.0v8/NukeStudio9.0v8.app
 nukestudio_windows: 'C:\Program Files\Nuke{version}\Nuke{v0}.exe'
 
 #
 # 3dsmax
-# 2012 & 2016 & 2017
 3dsmax_windows: 'C:\Program Files\Autodesk\3ds Max {version}\3dsmax.exe'
 
 #
 # Houdini
 #
-#houdini16.0.504_mac: /Applications/Houdini 16.0.504.20/Houdini.app
 houdini_windows: 'C:\Program Files\Side Effects Software\Houdini 16.0.504.20\bin\houdini.exe'
-#houdini16.0.504_linux: '/opt/hfs116.0.504.20/bin/houdini'
-
 
 #
 # Photoshop CC
 #
-photoshop_mac: /Applications/Adobe Photoshop CC 2015.5/Adobe Photoshop CC 2015.5.app
-photoshop_win: 'C:\Program Files\Adobe\Adobe Photoshop CC 2015.5\Photoshop.exe'
+photoshop_mac: /Applications/Adobe Photoshop CC {version}/Adobe Photoshop CC {version}.app
+photoshop_win: 'C:\Program Files\Adobe\Adobe Photoshop CC {version}\Photoshop.exe'
 
 #
-# Illustrator CC (Unsupported by Toolkit except for launch)
+# Illustrator CC
 #
-illustrator_win: 'C:\Program Files\Adobe\Adobe Illustrator CC 2015.3\Support Files\Contents\Windows\Illustrator.exe'
-illustrator_mac: /Applications/Adobe Illustrator CC 2015.3/Adobe Illustrator.app
-
-#
-# Hiero
-#
-#hiero_mac: /Applications/Nuke9.0v8/Hiero9.0v8.app
-#hiero_win: 'C:\Program Files\Nuke9.0v8\Nuke9.0.exe'
-#hiero_linux: Nuke9.0
+illustrator_win: 'C:\Program Files\Adobe\Adobe Illustrator CC {version}\Support Files\Contents\Windows\Illustrator.exe'
+illustrator_mac: /Applications/Adobe Illustrator CC {version}/Adobe Illustrator.app
 
 #
 # Tweak RV
 #
 rv_mac: /Applications/RV64.app
-rv_win: \\isln-smb\aw_config\Apps\RV\7.1.2\bin\rv.exe
+rv_win: '\\isln-smb\thr3dcgi_config\RV\latest\bin\rv.exe'
 rv_linux: rv
+
+#
+# Punch out
+#
+punch_out: '\\isln-smb\thr3dcgi_config\Agnostic\tk_tools\tk_punch_out.bat'
 
 
