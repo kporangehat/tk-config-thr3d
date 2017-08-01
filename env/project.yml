@@ -58,7 +58,7 @@ engines:
     default_group: THR3D
     hook_launch_python: default
     location:
-      version: v2.3.4
+      version: v2.3.7
       type: app_store
       name: tk-desktop
     show_recents: false

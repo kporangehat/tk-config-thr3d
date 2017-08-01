@@ -44,7 +44,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.8
+          version: v0.10.4.9
           type: git
         primary_description: Publish and version up the current scene
         primary_display_name: Scene File Publish
@@ -291,7 +291,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.8
+          version: v0.10.4.9
           type: git
         primary_description: Publish and version up the current Maya scene
         primary_display_name: Maya Publish
@@ -477,7 +477,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.8
+          version: v0.10.4.9
           type: git
         primary_description: Publishes and versions up the current Nuke script.
         primary_display_name: Nuke Publish
@@ -707,7 +707,7 @@ engines:
         hook_thumbnail: default
         location:
           path: https://github.com/thr3dcgi/tk-multi-publish.git
-          version: v0.10.4.8
+          version: v0.10.4.9
           type: git
         primary_description: Publish and version up the current Photoshop scene
         primary_display_name: Photoshop Publish
