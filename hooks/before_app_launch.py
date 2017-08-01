@@ -87,6 +87,9 @@ class BeforeAppLaunch(tank.Hook):
         # Engine specific functions
         if multi_launchapp.get_setting("engine") == "tk-nuke":
             logging.info("Running Before Launch Functions for Nuke")
+            # TODO, we need to remove this from here once the Nuke stuff is
+            # finished
+            os.environ['NUKE_PATH'] += r";\\isln-smb\aw_config\Git_Live_Code\Software\Nuke"
 
         if multi_launchapp.get_setting("engine") == "tk-houdini":
             logging.info("Running Before Launch Functions for Houdini")

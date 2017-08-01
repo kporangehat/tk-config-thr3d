@@ -37,6 +37,13 @@ keys:
         type: str
     content:
         type: str
+    camera_name:
+        type: str
+        choices:
+            FtNu: Front | Nutrial
+            FtLt: Front | Left
+            FtRt: Front | Right
+        default: FtNu
     sg_asset_type:
         type: str
     Asset:
@@ -501,7 +508,7 @@ paths:
         root_name: 'primary'
 
     2d_nuke_shot_render_exr:
-        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.exr'
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.exr'
         root_name: 'primary'
 
     2d_nuke_shot_publish_render_exr:
@@ -509,7 +516,7 @@ paths:
         root_name: 'primary'
 
     2d_nuke_shot_render_png:
-        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.png'
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.png'
         root_name: 'primary'
 
     2d_nuke_shot_publish_render_png:
@@ -517,7 +524,7 @@ paths:
         root_name: 'primary'
 
     2d_nuke_shot_render_tiff:
-        definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.tiff'
+        definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.tiff'
         root_name: 'primary'
 
     2d_nuke_shot_publish_render_tiff:
