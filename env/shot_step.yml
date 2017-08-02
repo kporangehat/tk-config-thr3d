@@ -102,18 +102,7 @@ engines:
         primary_publish_template: 3d_shot_publish_maya
         primary_scene_item_type: work_file
         primary_tank_type: Maya Scene
-        secondary_outputs:
-        - description: This will submit a job Deadline then publish your renders when
-            complete.
-          display_name: Submit to Deadline
-          display_group: Deadline
-          icon: icons/publish_nuke_review.png
-          name: deadline_submit
-          publish_template:
-          required: false
-          scene_item_type: mesh_group
-          selected: true
-          tank_type: Deadline
+        secondary_outputs: []
         template_work: 3d_shot_work_maya
       tk-multi-setframerange:
         location:
