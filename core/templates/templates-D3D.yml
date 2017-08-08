@@ -19,7 +19,14 @@
 # Whenever an app or an engine refers to a location on disk, it is using an entry defined in
 # this file. For more information, see the Shotgun Pipeline Toolkit Documentation.
 
-
+# =============================================================================
+# The MASTER templates file is templates-D3D.yml!!!!!
+# =============================================================================
+# All other templates files will be automatically overwritten when a new version
+# of the master is committed to Github. This ensures each facility's templates file 
+# stays in sync with the master and is updated automatically with the correct root_path
+# for the facility. This is managed by Travis-CI.
+# =============================================================================
 
 #
 # The keys section contains the definitions for all the different keys that are being
