@@ -239,6 +239,7 @@ paths:
 
     2d_shot_snapshot:
         definition: '@2d_shot_work/snapshots'
+        root_name: 'primary'
 
     3d_shot_work:
         definition: '@shot_root/3d/_workarea/{Step}'
@@ -250,9 +251,11 @@ paths:
 
     3d_shot_snapshot:
         definition: '@3d_shot_work/snapshots'
+        root_name: 'primary'
 
     3d_shot_cache:
         definition: '@3d_shot_publish/_cache/{Step}'
+        root_name: 'primary'
 
     shot_review_mov:
         definition: '@shot_root/img/mov/'
@@ -284,6 +287,7 @@ paths:
 
     2d_asset_snapshot:
         definition: '@2d_asset_work/snapshots'
+        root_name: 'primary'
 
     3d_asset_work:
         definition: '@asset_root/3d/_workarea/{Step}'
@@ -295,6 +299,7 @@ paths:
 
     3d_asset_snapshot:
         definition: '@3d_asset_work/snapshots'
+        root_name: 'primary'
 
     3d_asset_cache:
         definition: '@3d_asset_publish/_cache/{Step}'

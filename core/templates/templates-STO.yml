@@ -1,0 +1,655 @@
+# Copyright (c) 2015 Shotgun Software Inc.
+#
+# CONFIDENTIAL AND PROPRIETARY
+#
+# This work is provided "AS IS" and subject to the Shotgun Pipeline Toolkit
+# Source Code License included in this distribution package. See LICENSE.
+# By accessing, using, copying or modifying this work you indicate your
+# agreement to the Shotgun Pipeline Toolkit Source Code License. All rights
+# not expressly granted therein are reserved by Shotgun Software Inc.
+
+#
+# This file is one of the central points in the Shotgun Pipeline Toolkit configuration and
+# a counterpart to the folder configuration structure.
+#
+# The folder structure underneath the project folder is used to create folders on disk -
+# templates.yml (this file) refers to those folders. Therefore, the two files need to be
+# in sync. This file contains an overview of all locations that are used by Sgtk.
+#
+# Whenever an app or an engine refers to a location on disk, it is using an entry defined in
+# this file. For more information, see the Shotgun Pipeline Toolkit Documentation.
+
+# =============================================================================
+# The MASTER templates file is templates-D3D.yml!!!!!
+# =============================================================================
+# All other templates files will be automatically overwritten when a new version
+# of the master is committed to Github. This ensures each facility's templates file 
+# stays in sync with the master and is updated automatically with the correct root_path
+# for the facility. This is managed by Travis-CI.
+# =============================================================================
+
+#
+# The keys section contains the definitions for all the different keys that are being
+# used by Sgtk. A key is a magic token that is replaced by a value at runtime, for example
+# {Shot}. The section below tells Sgtk which data types and formats to expect for each key.
+#
+keys:
+  Episode:
+    type: str
+  Sequence:
+    type: str
+  Shot:
+    type: str
+  Step:
+    type: str
+  content:
+    type: str
+  camera_name:
+    type: str
+    choices:
+      FtNu: Front | Nutrial
+      FtLt: Front | Left
+      FtRt: Front | Right
+    default: FtNu
+  sg_asset_type:
+    type: str
+  Asset:
+    type: str
+  name:
+    type: str
+    filter_by: alphanumeric
+  geo_name:
+    type: str
+  iteration:
+    type: int
+    format_spec: '03'
+  version:
+    type: int
+    format_spec: '03'
+  version_four:
+    type: int
+    format_spec: '04'
+    alias: version
+  timestamp:
+    type: str
+  width:
+    type: int
+  height:
+    type: int
+  layer_name:
+    type: str 
+
+    # Represents the optional output name for frames written by the Shotgun Write Node
+  nuke.output:
+    alias: output
+    type: str
+    filter_by: alphanumeric
+
+  SEQ:
+    type: sequence
+    format_spec: '04'
+  eye:
+    type: str 
+
+  houdini.node:
+    alias: node
+    type: str
+  aov_name:
+    type: str 
+
+    # these are used by the Hiero exporter and pipeline
+  YYYY:
+    type: int
+    format_spec: '04'
+  MM:
+    type: int
+    format_spec: '02'
+  DD:
+    type: int
+    format_spec: '02'
+    alias: DD
+  project:
+    type: str 
+
+    # These are used for the Mari UDIM pipeline:
+  UDIM:
+    type: sequence
+    default: <UDIM>
+  mari.channel:
+    type: str
+    alias: channel
+  mari.layer:
+    type: str
+    alias: layer
+  mari.project_name:
+    type: str
+    alias: name
+  asset_name:
+    type: str
+    shotgun_entity_type: Asset
+    shotgun_field_name: code
+  task_name:
+    type: str
+    shotgun_entity_type: Task
+    shotgun_field_name: content
+
+    # Image extensions.
+  img_extension:
+    type: str
+    choices:
+      png: PNG Image (.png)
+      jpeg: JPEG Image (.jpeg)
+      tiff: TIFF Image (.tiff)
+      exr: EXR Image (.exr)
+    default: exr
+    alias: img 
+
+    # Maya supports two extension types.
+  maya_extension:
+    type: str
+    choices:
+      ma: Maya Ascii (.ma)
+      mb: Maya Binary (.mb)
+    default: mb
+    alias: extension
+
+    # Max supports one extension types.
+  max_extension:
+    type: str
+    choices:
+      max: 3ds Max (.max)
+    default: max
+    alias: extension
+
+    # Houdini supports three extension types.
+  houdini_extension:
+    type: str
+    choices:
+      hip: Hip (.hip)
+      hiplc: Hiplc (.hiplc)
+      hipnc: Hipnc (.hipnc)
+    default: hip
+    alias: extension
+
+    # Photoshop supports one extension types.
+  ps_extension:
+    type: str
+    choices:
+      psd: Photoshop Document (.psd)
+      psb: Photoshop Binary (.psb)
+    default: psd 
+
+    # THR3D added
+    # Extension for files duh.
+  ext:
+    type: str 
+
+  subversion:
+    type: int
+    format_spec: '02'
+
+#
+# The paths section contains all the the key locations where files are to be stored
+# by Sgtk Apps. Each path is made up of several keys (like {version} or {shot}) and
+# these are defined in the keys section above.
+#
+# Apps use these paths as part of their configuration to define where on disk
+# different files should go.
+#
+# In this default configuration, all of the root_name keys will be set to 'primary'.
+# This is because the default configuration stores all its production data in a single
+# tree and hence uses a single root folder on disk. If you wanted to extend the
+# configuration to span multiple root points, for example because you want to store
+# renders on a different server, you could define an additional root in Shotgun, and
+# then switch any relevant templates to point to that one instead.
+#
+
+paths:
+
+    # Common  path definitions to use as shorthand in order to avoid repetitive and verbose
+    # templates. This also makes it easy to change any of the common root paths and have the
+    # changes apply to all templates that use them.
+    #
+    # These don't require the standard formatting (with definition and root_name) because they
+    # will be set within each template that uses the alias.
+  shot_root: '{Episode}/{Sequence}/{Shot}/CGI'
+  asset_root: _assets/{sg_asset_type}/{Asset}
+
+    ##########################################################################################
+    # Project level paths
+    #
+
+
+    ##########################################################################################
+    # Sequence level paths
+    #
+
+
+    ##########################################################################################
+    # Shot level paths
+    #
+
+  2d_shot_work:
+    definition: '@shot_root/2d/_workarea/{Step}'
+    root_name: STO-primary
+
+  2d_shot_publish:
+    definition: '@shot_root/2d'
+    root_name: STO-primary
+
+  2d_shot_snapshot:
+    definition: '@2d_shot_work/snapshots'
+    root_name: STO-primary
+
+  3d_shot_work:
+    definition: '@shot_root/3d/_workarea/{Step}'
+    root_name: STO-primary
+
+  3d_shot_publish:
+    definition: '@shot_root/3d'
+    root_name: STO-primary
+
+  3d_shot_snapshot:
+    definition: '@3d_shot_work/snapshots'
+    root_name: STO-primary
+
+  3d_shot_cache:
+    definition: '@3d_shot_publish/_cache/{Step}'
+    root_name: STO-primary
+
+  shot_review_mov:
+    definition: '@shot_root/img/mov/'
+    root_name: STO-primary
+
+  shot_review_ren:
+    definition: '@shot_root/img/ren'
+    root_name: STO-primary
+
+  shot_version:
+    definition: '@shot_root/img/ren/v{version}'
+    root_name: STO-primary
+
+  shot_review_tex:
+    definition: '@shot_root/img/tex'
+    root_name: STO-primary
+
+    ##########################################################################################
+    # Asset level paths
+    #
+
+  2d_asset_work:
+    definition: '@asset_root/2d/_workarea/{Step}'
+    root_name: STO-primary
+
+  2d_asset_publish:
+    definition: '@asset_root/2d'
+    root_name: STO-primary
+
+  2d_asset_snapshot:
+    definition: '@2d_asset_work/snapshots'
+    root_name: STO-primary
+
+  3d_asset_work:
+    definition: '@asset_root/3d/_workarea/{Step}'
+    root_name: STO-primary
+
+  3d_asset_publish:
+    definition: '@asset_root/3d'
+    root_name: STO-primary
+
+  3d_asset_snapshot:
+    definition: '@3d_asset_work/snapshots'
+    root_name: STO-primary
+
+  3d_asset_cache:
+    definition: '@3d_asset_publish/_cache/{Step}'
+    root_name: STO-primary
+
+  asset_review_mov:
+    definition: '@asset_root/img/mov/'
+    root_name: STO-primary
+
+  asset_review_ren:
+    definition: '@asset_root/img/ren'
+    root_name: STO-primary
+
+  asset_version:
+    definition: '@asset_review_ren/v{version}'
+    root_name: STO-primary
+
+  asset_review_tex:
+    definition: '@asset_root/img/tex'
+    root_name: STO-primary
+
+    # ----------------------------------------------------------------------------------------
+    # DCC-specific templates
+
+    # -------------------------------------
+    # Photoshop Shot
+
+  2d_shot_work_photoshop:
+    definition: '@2d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{ps_extension}'
+    root_name: STO-primary
+
+  2d_shot_publish_photoshop:
+    definition: '@2d_shot_publish/{Shot}[_{content}]_{Step}_{version}.psd'
+    root_name: STO-primary
+
+  2d_shot_snapshot_photoshop:
+    definition: '@2d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.psd'
+    root_name: STO-primary
+
+  2d_shot_publish_png_photoshop:
+    definition: '@shot_review_tex/maps/v{version}/{layer_name}.png'
+    root_name: STO-primary
+
+    # Photoshop Asset
+
+  2d_asset_work_photoshop:
+    definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{ps_extension}'
+    root_name: STO-primary
+
+  2d_asset_publish_photoshop:
+    definition: '@2d_asset_publish/{Asset}[_{content}]_{Step}_{version}.psd'
+    root_name: STO-primary
+
+  2d_asset_snapshot_photoshop:
+    definition: '@2d_asset_snapshot/{Asset}_{Step}_{version}_{timestamp}.psd'
+    root_name: STO-primary
+
+  2d_asset_review_photoshop:
+    definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.jpeg'
+    root_name: STO-primary
+
+  2d_asset_publish_png_photoshop:
+    definition: '@asset_review_tex/maps/v{version}/{layer_name}.png'
+    root_name: STO-primary
+
+    # -------------------------------------
+    # Maya Shot
+
+  3d_shot_work_maya:
+    definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{maya_extension}'
+    root_name: STO-primary
+
+  3d_shot_publish_maya:
+    definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{maya_extension}'
+    root_name: STO-primary
+
+  3d_shot_snapshot_maya:
+    definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{maya_extension}'
+    root_name: STO-primary
+
+  shot_alembic_cache:
+    definition: '@3d_shot_cache/{Shot}_{Step}_{version}.abc'
+    root_name: STO-primary
+
+  shot_obj_cache:
+    definition: '@3d_shot_cache/{Shot}_{Step}_{version}.obj'
+    root_name: STO-primary
+
+    # Maya Asset
+
+  3d_asset_work_maya:
+    definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{maya_extension}'
+    root_name: STO-primary
+
+  3d_asset_publish_maya:
+    definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{maya_extension}'
+    root_name: STO-primary
+
+  3d_asset_snapshot_maya:
+    definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{maya_extension}'
+    root_name: STO-primary
+
+  asset_alembic_cache:
+    definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_{version}.abc'
+    root_name: STO-primary
+
+  asset_obj_cache:
+    definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_{version}.obj'
+    root_name: STO-primary
+
+    # -------------------------------------
+    # 3ds Max Shot
+
+  3d_shot_work_max:
+    definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{max_extension}'
+    root_name: STO-primary
+
+  3d_shot_publish_max:
+    definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{max_extension}'
+    root_name: STO-primary
+
+  3d_shot_snapshot_max:
+    definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{max_extension}'
+    root_name: STO-primary
+
+    # 3ds Max Asset
+
+  3d_asset_work_max:
+    definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{max_extension}'
+    root_name: STO-primary
+
+  3d_asset_publish_max:
+    definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{max_extension}'
+    root_name: STO-primary
+
+  3d_asset_snapshot_max:
+    definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{max_extension}'
+    root_name: STO-primary
+
+    # -------------------------------------
+    # Houdini Shot
+
+  3d_shot_work_houdini:
+    definition: '@3d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]{houdini_extension}'
+    root_name: STO-primary
+
+  3d_shot_publish_houdini:
+    definition: '@3d_shot_publish/{Shot}[_{content}]_{Step}_{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_shot_snapshot_houdini:
+    definition: '@3d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_shot_houdini_ifd:
+    definition: '@3d_shot_cache/{Shot}_{Step}_ifd_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_shot_houdini_dcn:
+    definition: '@3d_shot_cache/{Shot}_{Step}_dcn_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_shot_snapshot_extra_plane:
+    definition: '@3d_shot_cache/{Shot}_{Step}_plane_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+    # Houdini Asset
+
+  3d_asset_work_houdini:
+    definition: '@3d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]{houdini_extension}'
+    root_name: STO-primary
+
+  3d_asset_publish_houdini:
+    definition: '@3d_asset_publish/{Asset}[_{content}]_{Step}_{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_asset_snapshot_houdini:
+    definition: '@3d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_asset_houdini_ifd:
+    definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_ifd_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_asset_houdini_dcn:
+    definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_dcn_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+  3d_asset_snapshot_extra_plane:
+    definition: '@3d_asset_cache/{Asset}[_{content}]_{Step}_plane_{SEQ}.{version}.{houdini_extension}'
+    root_name: STO-primary
+
+    # -------------------------------------
+    # Nuke Shot
+
+  2d_shot_work_nuke:
+    definition: '@2d_shot_work/{Shot}[_{content}]_{Step}_{version}.[{iteration}.]nk'
+    root_name: STO-primary
+
+  2d_shot_publish_nuke:
+    definition: '@2d_shot_publish/{Shot}[_{content}]_{Step}_{version}.nk'
+    root_name: STO-primary
+
+  2d_shot_snapshot_nuke:
+    definition: '@2d_shot_snapshot/{Shot}_{Step}_{version}_{timestamp}.nk'
+    root_name: STO-primary
+
+  shot_review_mov_nuke:
+    definition: '@shot_review_mov/{Shot}_{Step}_{version}.[{iteration}.]mov'
+    root_name: STO-primary
+  2d_nuke_shot_render_mono_dpx:
+    definition: '@shot_root/img/comp/v{version}/_workarea/{Shot}_{Step}.{SEQ}.dpx'
+    root_name: STO-primary
+
+  2d_nuke_shot_publish_render_mono_dpx:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.dpx'
+    root_name: STO-primary
+
+  2d_nuke_shot_render_exr:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.exr'
+    root_name: STO-primary
+
+  2d_nuke_shot_publish_render_exr:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.exr'
+    root_name: STO-primary
+
+  2d_nuke_shot_render_png:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.png'
+    root_name: STO-primary
+
+  2d_nuke_shot_publish_render_png:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.png'
+    root_name: STO-primary
+
+  2d_nuke_shot_render_tiff:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{camera_name}_{version}.{SEQ}.tiff'
+    root_name: STO-primary
+
+  2d_nuke_shot_publish_render_tiff:
+    definition: '@shot_root/img/comp/v{version}/{Shot}_{Step}.{SEQ}.tiff'
+    root_name: STO-primary
+
+    # Nuke Asset
+
+  2d_asset_work_nuke:
+    definition: '@2d_asset_work/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]nk'
+    root_name: STO-primary
+
+  2d_asset_publish_nuke:
+    definition: '@2d_asset_publish/{Asset}[_{content}]_{Step}_{version}.nk'
+    root_name: STO-primary
+
+  2d_asset_snapshot_nuke:
+    definition: '@2d_asset_snapshot/{Asset}[_{content}]_{Step}_{version}_{timestamp}.nk'
+    root_name: STO-primary
+
+  asset_review_mov_nuke:
+    definition: '@asset_review_mov/{Asset}[_{content}]_{Step}_{version}.[{iteration}.]mov'
+    root_name: STO-primary
+
+  2d_nuke_asset_render_mono_dpx:
+    definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.dpx'
+    root_name: STO-primary
+
+  2d_nuke_asset_publish_render_mono_dpx:
+    definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.dpx'
+    root_name: STO-primary
+
+  2d_nuke_asset_render_exr:
+    definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.exr'
+    root_name: STO-primary
+
+  2d_nuke_asset_publish_render_exr:
+    definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.exr'
+    root_name: STO-primary
+
+  2d_nuke_asset_render_png:
+    definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.png'
+    root_name: STO-primary
+
+  2d_nuke_asset_publish_render_png:
+    definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.png'
+    root_name: STO-primary
+
+  2d_nuke_asset_render_tiff:
+    definition: '@asset_root/img/comp/v{version}/_workarea/{Asset}[_{content}]_{Step}.{SEQ}.tiff'
+    root_name: STO-primary
+
+  2d_nuke_asset_publish_render_tiff:
+    definition: '@asset_root/img/comp/v{version}/{Asset}[_{content}]_{Step}.{SEQ}.tiff'
+    root_name: STO-primary
+
+    # -------------------------------------
+    # Render Images Shot
+
+  render_img_work:
+    definition: '@shot_review_ren/{Shot}[_{content}]_{Step}_{SEQ}.{version}.exr'
+    root_name: STO-primary
+
+  render_shot_version:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.{img_extension}'
+    root_name: STO-primary
+
+  render_shot_version_png:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.png'
+    root_name: STO-primary
+  render_shot_version_exr:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.exr'
+    root_name: STO-primary
+  render_shot_version_jpeg:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.jpg'
+    root_name: STO-primary
+  render_shot_version_tiff:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.tiff'
+    root_name: STO-primary
+  render_shot_version_mov:
+    definition: '@shot_version/{Shot}_{Step}_{version}.{SEQ}.mov'
+    root_name: STO-primary
+
+
+    # Render Images Asset
+
+  asset_render_img_work:
+    definition: '@asset_review_ren/{Asset}[_{content}]_{Step}_{SEQ}.{version}.exr'
+    root_name: STO-primary
+
+  render_asset_version:
+    definition: '@asset_version/{Asset}_{Step}_{version}.{SEQ}.{img_extension}'
+    root_name: STO-primary
+
+    # ##########################################################################################
+    # # Asset pipeline
+
+
+#
+# The strings section is similar to the paths section - but rather than defining paths
+# on disk, it contains a list of strings. Strings are typically used when you want to be
+# able to configure the way data is written to shotgun - it may be the name field for a
+# review version or the formatting of a publish.
+#
+
+strings:
+
+    # when a review Version in Shotgun is created inside of Nuke, this is the
+    # name that is being given to it (the code field)
+  nuke_shot_version_name: '{Shot}_{name}_{nuke.output}_v{version}.{iteration}'
+  nuke_quick_shot_version_name: '{Shot}_{name}_quick_{iteration}'
+
+  nuke_asset_version_name: '{Asset}[_{content}]_{name}_{nuke.output}_v{version}.{iteration}'
+  nuke_quick_asset_version_name: '{Asset}[_{content}]_{name}_quick_{iteration}'
+
+    # define how new Mari projects should be named
+    # mari_asset_project_name: "{mari.project_name} - Asset {asset_name}, {task_name}"
