@@ -1,0 +1,11 @@
+language: python
+python:
+  - "2.7"
+# command to install dependencies
+install:
+  - pip install ruamel.yaml
+# command to run tests
+script: python ./.travis/tk_template_sync.py
+notifications:
+  email:
+    - kp@shotgunsoftware.com
