@@ -1,6 +1,11 @@
 language: python
 python:
   - '2.7'
+env:
+  global:
+  - ENCRYPTION_LABEL: "85f677861e6e"
+  - COMMIT_AUTHOR_EMAIL: "travis@travis-ci.org"
+
 install:
   - pip install ruamel.yaml
 script: python ./.travis/tk_template_sync.py
