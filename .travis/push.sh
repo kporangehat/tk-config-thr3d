@@ -28,8 +28,8 @@ if git diff --quiet; then
     exit 0
 fi
 
-# Add our new template files
-git add core/templates/templates.*.yml
+# Add our new template files. Keep this specific (just in case).
+git add core/templates/*.yml
 
 # Commit them locally
 git commit --message "[Travis build ${TRAVIS_BUILD_NUMBER}] Auto sync templates files for all facilities [ci-skip]"
