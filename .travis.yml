@@ -5,15 +5,23 @@ env:
   global:
   - ENCRYPTION_LABEL: "85f677861e6e"
   - COMMIT_AUTHOR_EMAIL: "travis@travis-ci.org"
+  - COMMIT_AUTHOR_NAME: "Travis-CI"
 
 install:
   - pip install ruamel.yaml
+
 script: python ./.travis/tk_template_sync.py
-after_success:
-  - .travis/push.sh
+
+deploy:
+  provider: script
+  script: .travis/push.sh
+  skip_cleanup: true
+  # on:
+  #   branch: develop
+
 notifications:
   email:
     - kp@shotgunsoftware.com
-env:
-  matrix:
-    secure: JhAriZTkr+51nxil1WiafZ6YhmUmmMXhhbGPQugoAMwCf48i9gSdpFdprd3soYNtOqUp296wCd3N7mIaIJ/t/xGvh3BZV/GNogBq2R+s/QfnB+9B2XxiL3PFFY7XLXfSamULRLQu0S51I8wHl/9yDVJs3k4P77D5jKqs1wIU+3yD5j0S6K2/XN7zJWebFBTHrACPxCt6uKzl12j3U7oAz80c1JDtZMo09LIIv1pcbb6LKLqeUcqTq8z+po84UrZDnoR57mS4TJnxGZoEMQlPGPa6b71iYUZJtqX+uk9ZCkH/8ZJrnauf41d4aOyFj6y1NCDdACaTd5bTMJBWf8yr2Fo1x445QVvz62Qp+3Bsw05tcuHV9vbhBn26k9nyCnyNa5lYR6tdP/PcF11f67IBIgkoJBpCTjhuMM+Yq8wPdxeB5nPzdKPIUxesju3iDjVvK6iN/8MZtaPDGeNRMWrtDdv3UCgqaLkhdLIsz8re+pFi55OkuhForXvj53c+yaIjhZFKrwimv6iZfkzMWgRFkIrluwXkDw9KUNm7K3+iwrpAaJa4UpKQ6zB//q/WU7PGwSL84UsGMrtFUHR7NTrObniJ3fFs2U5HTz5aWpgaQ9LF3Tg8EEF6HFt8jBDlMrD4Kxin1ubwFF8gXAsM6bQbPN1G0zuOa0mr9TSRV9wrdtY=
+# env:
+#   matrix:
+#     secure: JhAriZTkr+51nxil1WiafZ6YhmUmmMXhhbGPQugoAMwCf48i9gSdpFdprd3soYNtOqUp296wCd3N7mIaIJ/t/xGvh3BZV/GNogBq2R+s/QfnB+9B2XxiL3PFFY7XLXfSamULRLQu0S51I8wHl/9yDVJs3k4P77D5jKqs1wIU+3yD5j0S6K2/XN7zJWebFBTHrACPxCt6uKzl12j3U7oAz80c1JDtZMo09LIIv1pcbb6LKLqeUcqTq8z+po84UrZDnoR57mS4TJnxGZoEMQlPGPa6b71iYUZJtqX+uk9ZCkH/8ZJrnauf41d4aOyFj6y1NCDdACaTd5bTMJBWf8yr2Fo1x445QVvz62Qp+3Bsw05tcuHV9vbhBn26k9nyCnyNa5lYR6tdP/PcF11f67IBIgkoJBpCTjhuMM+Yq8wPdxeB5nPzdKPIUxesju3iDjVvK6iN/8MZtaPDGeNRMWrtDdv3UCgqaLkhdLIsz8re+pFi55OkuhForXvj53c+yaIjhZFKrwimv6iZfkzMWgRFkIrluwXkDw9KUNm7K3+iwrpAaJa4UpKQ6zB//q/WU7PGwSL84UsGMrtFUHR7NTrObniJ3fFs2U5HTz5aWpgaQ9LF3Tg8EEF6HFt8jBDlMrD4Kxin1ubwFF8gXAsM6bQbPN1G0zuOa0mr9TSRV9wrdtY=
