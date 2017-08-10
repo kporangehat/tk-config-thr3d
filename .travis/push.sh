@@ -44,11 +44,16 @@ echo "running openssl"
 echo "ENCRYPTION_LABEL: ${ENCRYPTION_LABEL}"
 echo "ENCRYPTED_KEY: ${ENCRYPTED_KEY}"
 echo "ENCRYPTED_IV: ${ENCRYPTED_IV}"
-openssl aes-256-cbc -K $encrypted_85f677861e6e_key -iv $encrypted_85f677861e6e_iv -in id_rsa_thr3d_deploy.pub.enc -out id_rsa_thr3d_deploy.pub -d
-# openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_thr3d_deploy.pub.enc -out deploy_key -d
-chmod 600 id_rsa_thr3d_deploy.pub
+
+# openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} -in id_rsa_thr3d_deploy.pub.enc -out id_rsa_thr3d_deploy.pub -d
+# # openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_thr3d_deploy.pub.enc -out deploy_key -d
+# chmod 600 id_rsa_thr3d_deploy.pub
+
 eval `ssh-agent -s`
-ssh-add id_rsa_thr3d_deploy.pub
+openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} -in id_rsa_thr3d_deploy.pub.enc -d | ssh-add -
+
+# Now that we're all set up, we can push.
+git push $SSH_REPO $TRAVIS_BRANCH
 
 
 
