@@ -220,7 +220,7 @@ paths:
         root_name: 'primary'
 
     foo:
-        definition: '_assets/fooF'
+        definition: '_assets/foog'
         root_name: 'primary'
 
     ##########################################################################################
