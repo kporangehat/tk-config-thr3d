@@ -45,12 +45,8 @@ echo "ENCRYPTION_LABEL: ${ENCRYPTION_LABEL}"
 echo "ENCRYPTED_KEY: ${ENCRYPTED_KEY}"
 echo "ENCRYPTED_IV: ${ENCRYPTED_IV}"
 
-# openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} -in id_rsa_thr3d_deploy.pub.enc -out id_rsa_thr3d_deploy.pub -d
-# # openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in id_rsa_thr3d_deploy.pub.enc -out deploy_key -d
-# chmod 600 id_rsa_thr3d_deploy.pub
-
-# eval `ssh-agent -s`
-# openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} -in id_rsa_thr3d_deploy.pub.enc -d | ssh-add -
+openssl aes-256-cbc -K ${ENCRYPTED_KEY} -iv ${ENCRYPTED_IV} -in id_rsa_thr3d_deploy.pub.enc -out id_rsa_thr3d_deploy.pub -d
+chmod 600 id_rsa_thr3d_deploy.pub
 
 cp id_rsa_thr3d_deploy.pub ~/.ssh/id_rsa
 
