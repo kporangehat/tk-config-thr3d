@@ -212,8 +212,13 @@ paths:
     #
     # These don't require the standard formatting (with definition and root_name) because they
     # will be set within each template that uses the alias.
-    shot_root: '{Episode}/{Sequence}/{Shot}/CGI'
-    asset_root: '_assets/{sg_asset_type}/{Asset}'
+    shot_root: 
+        definition: '{Episode}/{Sequence}/{Shot}/CGI'
+        root_name: 'primary'
+    asset_root: 
+        definition: '_assets/{sg_asset_type}/{Asset}'
+        root_name: 'primary'
+
 
     ##########################################################################################
     # Project level paths
