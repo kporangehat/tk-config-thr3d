@@ -16,8 +16,8 @@ deploy:
   provider: script
   script: .travis/push.sh
   skip_cleanup: true
-  # on:
-  #   branch: develop
+  on:
+    branch: ${TRAVIS_BRANCH}
 
 notifications:
   email:
